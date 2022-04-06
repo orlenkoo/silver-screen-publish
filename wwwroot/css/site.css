@@ -1,0 +1,344 @@
+﻿/* Sticky footer styles
+-------------------------------------------------- */
+
+:root {
+    --cc-primary: #000;
+    --cc-secondary: gray;
+    --cc-background: #fff;
+    --cc-danger: red;
+    --cc-secondary-background: #B4B7C2;
+    --cc-tertiary-background: #000;
+    --cc-font-primary: #000;
+    --cc-font-secondary: #fff;
+    --cc-font-tertiary: gray;
+    --cc-message-border-radius: 10px;
+}
+    
+
+*, *:focus, *:hover {
+    outline: none;
+}
+
+html, body {
+    background-color: var(--cc-background: #fff);
+    color: var(--cc-font-primary);
+}
+
+header {
+    background-color: var( --cc-secondary-background );
+}
+
+.form-control-plaintext {
+    color:white;
+}
+
+.field-validation-error {
+    color: #dc3545;
+}
+
+/* start chat */
+
+.has-countdown .ask-question {
+    display: none;
+}
+
+.ask-question-form textarea {
+    max-width:100%;
+    margin-right: 10px;
+}
+
+.hide-questions .question, .hide-questions .reply, .hide-questions .reply-box {
+    display: none;
+}
+
+.user-thread {
+    background-color: #eee;
+    margin-bottom:10px;
+    padding: 10px;
+}
+
+.user-thread-title, .user-thread-counts {
+    margin-left: 20px;
+    text-align: left;
+    font-size: 18pt;
+}
+
+.user-thread-title + .question, .user-thread-counts + .question {
+    margin-top: 5px;
+}
+
+.user-thread-collapse {
+    margin: 12px;
+    cursor: pointer;
+}
+
+.message {
+    color: var(--cc-font-secondary);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: var(--cc-message-border-radius);
+    text-align: center;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+    white-space: pre-line;
+    position: relative;
+}
+
+.question {
+    background-color: var(--cc-secondary-background);
+    border-bottom-right-radius: 0px;
+}
+
+.reply {
+    background-color: var(--cc-tertiary-background);
+    border-bottom-left-radius: 0px;
+}
+
+.reply-box {
+    text-align: left;
+}
+
+.reply-box.hide {
+    display:none;
+}
+
+.question.hidden, .reply.hidden {
+    display:none;
+}
+
+.reply-question {
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    cursor: pointer;
+}
+
+.controls {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.question-asker, .replier {
+    margin-top: 10px;
+    opacity: 0.5;
+    width: 100%;
+    text-align: right;
+    display: block;
+}
+
+.replier {
+    color: var(--cc-font-tertiary);
+}
+
+.question .replier {
+    display: none;
+}
+
+@keyframes flash {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+
+    25%, 75% {
+        opacity: 0.25;
+    }
+}
+
+.flash {
+    animation-name: flash;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* end chat */
+
+/* Group chat */
+
+.group-chat .message {
+    margin: 20px auto;
+}
+
+.group-chat .question-list {
+    max-height: 600px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+    scrollbar-width: thin;
+    scrollbar-color: white #444;
+}
+
+.group-chat .question-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.group-chat .question-list::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: #444;
+}
+
+.group-chat .question-list::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+}
+
+.fa-volume-mute {
+    opacity: 0.25;
+}
+
+.question .fa-volume-mute {
+    display: none !important;
+}
+
+.is-muted .fa-volume-mute {
+    opacity: 1;
+    color: red;
+}
+
+.fa-volume-mute:hover {
+    opacity: 0.75;
+}
+
+/* End Group chat*/
+/* Player css */
+.theo-primary-color,
+.vjs-selected {
+    color: #d9d9d9 !important;
+}
+
+.theo-primary-background {
+    color: #000000 !important;
+    background-color: #d9d9d9 !important;
+}
+
+.theo-secondary-color {
+    color: #ffffff !important;
+}
+
+.theo-secondary-background {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
+.theo-tertiary-color {
+    color: #000000 !important;
+}
+
+.theo-tertiary-background {
+    color: #ffffff !important;
+    background-color: #000000 !important;
+}
+
+
+
+.choose-nickname {
+    margin-top:50px;
+}
+
+/* button customizations */
+.btn {
+    border-radius: 0 !important;
+    border-color: var(--cc-primary) !important;
+    color: var(--cc-font-primary) !important;
+    background-color: transparent !important;
+    text-transform:uppercase;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    color: var(--cc-font-secondary) !important;
+    background-color: var(--cc-primary) !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    color: var(--cc-font-secondary) !important;
+    background-color: var(--cc-primary) !important;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: none;
+}
+
+.btn-danger {
+    border-color: var(--cc-danger) !important;
+    color: var(--cc-danger) !important;
+    background-color: transparent !important;
+}
+
+.btn-danger:not(:disabled):not(.disabled).active, .btn-danger:not(:disabled):not(.disabled):active, .show > .btn-danger.dropdown-toggle {
+    color: var(--cc-font-secondary) !important;
+    background-color: var(--cc-danger) !important;
+    border-color: var(--cc-danger) !important;
+}
+
+.btn-danger:not(:disabled):not(.disabled).active:focus, .btn-danger:not(:disabled):not(.disabled):active:focus, .show > .btn-danger.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-danger:hover {
+    color: var(--cc-font-secondary) !important;
+    background-color: var(--cc-danger) !important;
+    border-color: var(--cc-danger) !important;
+}
+
+.btn-secondary {
+    border-color: var(--cc-secondary) !important;
+    color: var(--cc-secondary) !important;
+    background-color: transparent !important;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle {
+    color: var(--cc-font-secondary) !important;
+    background-color: var(--cc-secondary) !important;
+    border-color: var(--cc-secondary) !important;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active:focus, .btn-secondary:not(:disabled):not(.disabled):active:focus, .show > .btn-secondary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-secondary:hover {
+    color: var(--cc-font-secondary) !important;
+    background-color: var(--cc-secondary) !important;
+    border-color: var(--cc-secondary) !important;
+}
+/* end button customizations */
+
+/* navbar customizations*/
+
+.navbar-brand img {
+    width: 200px;
+}
+
+.navbar a {
+    color: black;
+    text-transform: uppercase;
+}
+
+.navbar a {
+    color: var(--cc-font-primary);
+}
+
+.navbar a:hover {
+    color: var(--cc-font-tertiary);
+}
+
+/* end navbar customizations*/

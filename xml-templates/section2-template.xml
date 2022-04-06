@@ -1,0 +1,31 @@
+<StreamNameGroup>
+  <Name>{0}_all</Name>
+  <Description></Description>
+  <StreamName>{0}_all</StreamName>
+  <Members>
+    <Member>
+      <MemberName>{0}_1080</MemberName>
+      <EncodeName>{0}_1080</EncodeName>
+      <MediaListRendition>
+        <WowzaVideoOnly>false</WowzaVideoOnly>
+        <WowzaAudioOnly>false</WowzaAudioOnly>
+      </MediaListRendition>
+    </Member>
+    <Member>
+      <MemberName>{0}_720</MemberName>
+      <EncodeName>{0}_720</EncodeName>
+      <MediaListRendition>
+        <WowzaVideoOnly>false</WowzaVideoOnly>
+        <WowzaAudioOnly>false</WowzaAudioOnly>
+      </MediaListRendition>
+    </Member>
+    <Member>
+      <MemberName>{0}_480</MemberName>
+      <EncodeName>{0}_480</EncodeName>
+      <MediaListRendition>
+        <WowzaVideoOnly>false</WowzaVideoOnly>
+        <WowzaAudioOnly>false</WowzaAudioOnly>
+      </MediaListRendition>
+    </Member>
+  </Members>
+</StreamNameGroup>

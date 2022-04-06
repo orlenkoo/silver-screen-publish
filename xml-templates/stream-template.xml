@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<Transcode>
+		<Description></Description>
+		<Decode>
+			<Video>
+				<Implementation>NVCUVID</Implementation>
+				<Deinterlace>false</Deinterlace>
+			</Video>
+		</Decode>
+		<Scale>
+			<!-- default, CUDA -->
+			<Implementation>CUDA</Implementation>
+			<Parameters></Parameters>
+			<Properties>
+			</Properties>
+		</Scale>
+    <Encodes />
+    <StreamNameGroups />
+	</Transcode>
+</Root>

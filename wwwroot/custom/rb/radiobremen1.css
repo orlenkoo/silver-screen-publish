@@ -1,0 +1,225 @@
+﻿:root {
+    --cc-font-primary: #ffffff;
+}
+
+html, body {
+    background-color: #010248;
+    color: #ffffff;
+    font-family: Thesis, arial, roboto, "droid sans", helvetica, sans-serif;
+    text-align: left !important;
+}
+
+h1, h2, h3, h4 {
+    /*   text-transform: uppercase; */
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 25px;
+}
+
+h1, h2 {
+    font-size: 40px;
+}
+
+p {
+    font-size: 18px;
+}
+
+header {
+    background-color: #010248;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 575px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
+.navbar-brand img {
+    width: auto;
+    max-width: 75%;
+}
+
+@media screen and (max-width: 575px) {
+    .navbar-brand img {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 2000px) {
+    .navbar-brand img {
+        width: 90%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .navbar-expand-sm > .container, .navbar-expand-sm > .container-fluid {
+        flex-wrap: nowrap;
+    }
+}
+
+.btn {
+    border-radius: 0 !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+    background-color: transparent !important;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    color: #fff !important;
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    color: #f5f5f5 !important;
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: none;
+}
+
+.replier {
+    color: #ccc;
+}
+
+.stream {
+    padding: 0;
+}
+
+.stream-countdown {
+    font-family: Thesis, arial, roboto, "droid sans", helvetica, sans-serif;
+    ;
+    background-color: #0000fb;
+    color: #ffffff;
+    right: 0px;
+    bottom: 5px;
+    position: absolute;
+    line-height: inherit;
+    padding: 10px;
+    padding-right: 50px;
+    /* padding-bottom: 0; */
+    font-size: 2.0em;
+    font-weight: normal !important;
+}
+
+.question-list div {
+    display: inline-block;
+    width: 100%;
+}
+
+.question-list {
+    overflow-y: auto;
+    max-height: 500px;
+    scrollbar-width: thin;
+    scrollbar-color: #000000 #ccc;
+    overflow-x: hidden;
+}
+
+.question-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.question-list::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: #ccc;
+}
+
+.question-list::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+    border: none;
+}
+
+@media (min-width: 800px) {
+    .question-list {
+        overflow-y: auto;
+        /* This is the height the video player will show as it's at 75% width of 100vw and 16:9, so (0.75 * 9) / 16 =  0.421875 . The 169 is the h2 height and the question form height*/
+        /*       height: calc((100vw * 0.421875) - 169px); */
+        max-height: initial;
+    }
+}
+
+@media (max-width: 60%) {
+
+    html {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .reply, .question {
+        font-size: 14px;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    .ask-question-form input[type=submit] {
+        font-size: 14px;
+    }
+
+    .stream-countdown {
+        font-size: 2em;
+    }
+
+    .question-area {
+        padding-top: 1em;
+    }
+}
+
+/* Set other image */
+.theoplayer-skin .vjs-big-play-button:before {
+    content: "";
+    background: url('https://www.silver-screen.de/custom/mbfw/playbutton.png') no-repeat 0 0;
+    background-size: 100%;
+    display: block;
+}
+/* Remove default THEOplayer image */
+.theo-big-play-button-svg-container svg {
+    display: none;
+}
+/* Remove default spotlight around button on focus */
+.theoplayer-skin:hover .vjs-big-play-button:after,
+.theoplayer-skin .vjs-big-play-button:focus:after {
+    opacity: 0;
+}
+
+.controls {
+    top: 2px;
+    right: 2px;
+}
+
+.text-center {
+    text-align: left !important;
+}
+
+.nav-link {
+    color: #ffffff;
+}
+
+.navbar a {
+    color: #ffffff !important;
+}
+
+.navbar a.text-dark {
+    color: #ffffff;
+    !important;
+}

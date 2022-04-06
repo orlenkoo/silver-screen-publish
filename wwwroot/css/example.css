@@ -1,0 +1,179 @@
+﻿/* the base layout is on bootstrap 4 */
+/* for custom HTML - an overview of the responsive grid system is available https://getbootstrap.com/docs/4.0/layout/grid/ */
+
+/* for responsive breakpoints to match bootstrap use:
+    @media (min-width: 576px) { }
+    @media (min-width: 768px) { }
+    @media (min-width: 992px) { }
+    @media (min-width: 1200px) { }
+
+    @media (max-width: 575.98px) { }
+    @media (max-width: 767.98px) { }
+    @media (max-width: 991.98px) { }
+    @media (max-width: 1199.98px) { }
+*/
+
+
+:root {
+    /* primary color - used for borders and highlights to stand out against the primary background color */
+    /*--cc-primary: #000;*/
+    /* background -  main background color */
+    /*--cc-background: #fff;*/
+    /* secondary background -  header background color */
+    /*--cc-secondary-background: #B4B7C2;*/
+    /* tertiary background -  footer background color */
+    /*--cc-tertiary-background: #000;*/
+    /* font primary - font color on primary background */
+    /*--cc-font-primary: #000;*/
+    /* font secondary - font color on secondary background */
+    /*--cc-font-secondary: #fff;*/
+    /* font secondary - font color on tertiary background */
+    /*--cc-font-tertiary: gray;*/
+    /* message border radius - default border radius for the corners of messages in the chat */
+    /*--cc-message-border-radius: 10px;*/
+}
+
+
+/* button customizations */
+.btn {
+    /*border-radius: 0 !important;
+    border-color: var(--cc-primary) !important;
+    color: var(--cc-font-primary) !important;
+    background-color: transparent !important;
+    text-transform: uppercase;*/
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    /*color: var(--cc-font-secondary) !important;
+    background-color: var(--cc-primary) !important;*/
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    /*box-shadow: none;*/
+}
+
+.btn-primary:hover {
+    /*color: var(--cc-font-secondary) !important;
+    background-color: var(--cc-primary) !important;*/
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    /*box-shadow: none;*/
+}
+/* end button customizations */
+
+/* navbar customizations*/
+
+.navbar-brand img {
+    /*width: 200px;*/
+}
+
+.navbar a {
+    /*color: black;
+    text-transform: uppercase;*/
+}
+
+.navbar a {
+    /*color: var(--cc-font-primary);*/
+}
+
+.navbar a:hover {
+    /*color: var(--cc-font-tertiary);*/
+}
+
+/* end navbar customizations*/
+
+
+/* video stream area */
+/* full player customization guide can be found in - https://docs.theoplayer.com/how-to-guides/11-ui/13-ui-skinning.md */
+/* an interactive editor is available here - https://demo.theoplayer.com/ui-skinning */
+.theo-primary-color,
+.vjs-selected {
+    /*color: #d9d9d9 !important;*/
+}
+
+.theo-primary-background {
+    /*color: #000000 !important;
+    background-color: #d9d9d9 !important;*/
+}
+
+.theo-secondary-color {
+    /*color: #ffffff !important;*/
+}
+
+.theo-secondary-background {
+    /*color: #000000 !important;
+    background-color: #ffffff !important;*/
+}
+
+.theo-tertiary-color {
+    /*color: #000000 !important;*/
+}
+
+.theo-tertiary-background {
+    /*color: #ffffff !important;
+    background-color: #000000 !important;*/
+}
+
+.stream-countdown {
+    /*bottom: 10px;
+    right: 10px;*/
+}
+
+.stream-unavailable {
+/*    padding: 30px 0;
+    text-align: center;*/
+}
+/* end video stream area */
+
+/* chat system */
+
+/* wrapper around all messages */
+.questions {
+
+}
+
+/* class applied to all messages, both questions and replies */
+.message {
+    /*color: var(--cc-font-secondary);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: var(--cc-message-border-radius);
+    text-align: center;
+    -webkit-animation: fadein 2s;*/ /* Safari, Chrome and Opera > 12.1 */
+    /*-moz-animation: fadein 2s;*/ /* Firefox < 16 */
+    /*-ms-animation: fadein 2s;*/ /* Internet Explorer */
+    /*-o-animation: fadein 2s;*/ /* Opera < 12.1 */
+    /*animation: fadein 2s;*/
+}
+
+.question {
+    /*background-color: var(--cc-secondary-background);*/
+}
+
+.reply {
+    /*background-color: var(--cc-tertiary-background);*/
+}
+
+/* name of person in replies on moderator page and group chat */
+.question-asker, .replier {
+/*    margin-top: 10px;
+    opacity: 0.5;
+    width: 100%;
+    text-align: right;
+    display: block;*/
+}
+
+/* the reply form */
+.ask-question-form {
+}
+
+/* the reply form button */
+.ask-question-form btn {
+}
+
+/* nickname form for anonymous streams */
+.pick-nickname-form {
+
+}
+/* end chat system */

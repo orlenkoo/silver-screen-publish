@@ -1,0 +1,41 @@
+﻿body.embedded #queues li .btn.btn-success,
+body.embedded #contactform .btn,
+body.embedded nui-questionnaire .nui-btn.normal,
+body.embedded #queues li .btn.btn-danger {
+    background-color: red;
+}
+
+.modal-content .nui-btn.normal {
+    background-color: #000;
+    color: #fff;
+}
+
+
+.modal-content .nui-btn.normal:hover {
+    background-color: #000;
+    color: #fff;
+}
+.nui-btn.normal.highlight,
+nui-commandline .nui-form button[type=submit] {
+    font-size: 14px;
+    background-color: #000;
+    border-color: #000;
+    border-radius: 0;
+    color: #fff;
+}
+
+nui-commandline .nui-form button[type=submit]:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.nui-btn.normal.highlight:hover,
+nui-commandline .nui-form button[type=submit]:hover {
+    background-color: #333;
+    border-color: #000;
+    color: #fff;
+}
+
+.nui-btn.icon:hover {
+    color: #091D62;
+}

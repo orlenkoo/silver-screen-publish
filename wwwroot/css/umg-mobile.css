@@ -1,0 +1,411 @@
+﻿/* ------------------------------------MEDIUM SIZE------------------------------------ */
+
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+
+    /* ---------HEADER--------- */
+
+    header {
+        padding: 45px 40px;
+    }
+
+    header .button-wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* ---------GENERAL--------- */
+
+    .spacer {
+        height: 36px;
+    }
+
+    .spacer-small {
+        height: 18px;
+    }
+
+    /* ---------TEXT SETTINGS--------- */
+
+    .overlay-title {
+        font-size: 64px;
+        line-height: 64px;
+    }
+
+    .overlay-subtitle {
+        font-size: 36px;
+        line-height: 36px;
+    }
+
+    footer .material-icons, .material-icons-outlined, footer .logo {
+        margin-left: 0px;
+    }
+
+    footer .logo {
+        margin-left: 1px;
+    }
+
+
+    /* ---------VIDEO--------- */
+
+    h1.overlay-title {
+        margin-bottom: 10px;
+    }
+
+    h2.overlay-subtitle {
+        margin-bottom: 0px;
+    }
+
+    #play-button {
+        max-width: 60px;
+    }
+
+
+    /* ---------CONTENT--------- */
+
+    .content-wrapper {
+        padding: 0px;
+        padding-top: 40px;
+    }
+
+    .main-content {
+        padding: 0px 40px;
+    }
+
+    .col-wrapper .column:nth-child(1) {
+        padding-left: 40px;
+    }
+
+    .col-wrapper .column:nth-child(2) {
+        padding-right: 40px;
+    }
+
+    .content-wrapper > .col-wrapper {
+        flex-direction: column;
+    }
+
+    .main-col-1, .main-col-2 {
+        width: 100%;
+    }
+
+    .main-col-1 {
+        margin-bottom: 33px;
+    }
+
+    .content-wrapper .col-wrapper .column:nth-child(1),
+    .content-wrapper .col-wrapper .column:nth-child(2) {
+        padding: 0px 40px;
+    }
+
+    .main-col-2 {
+        margin-bottom: 48px;
+    }
+
+    .main-col-2 .col-content {
+        margin-right: 0%;
+    }
+
+    .description.mb-m {
+        margin-bottom: 40px !important;
+    }
+
+    .title.mb-m {
+        margin-bottom: 20px !important;
+    }
+
+    .artist-img {
+        width: 100%;
+    }
+
+    .mobile-info {
+        display: block;
+    }
+
+    .mobile-hide {
+        display: none;
+    }
+
+    .info-section:not(.section-break), .info-section.mobile-info, .info-section .info-headline {
+        margin-bottom: 0px;
+    }
+
+    .info-section:not(.section-break), .info-section.mobile-info, .info-section .info-headline {
+        margin-bottom: 0px;
+    }
+
+    .info-section .info-headline:not(.mobile-hide) {
+        display: flex;
+        align-items: center;
+    }
+
+
+    /* ---------FOOTER--------- */
+
+    footer {
+        padding-bottom: 40px;
+    }
+
+    footer .button-wrapper {
+        padding: 0px 40px;
+    }
+
+
+}
+
+@media only screen and (max-width: 1440px) {
+
+    .has-chat .overlay-title {
+        font-size: 60px;
+        line-height: 66px;
+    }
+
+    .has-chat .overlay-subtitle {
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+    .has-chat .overlay-event-date {
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+
+    .overlay-title, .has-chat .overlay-title {
+        font-size: 40px;
+        line-height: 44px;
+    }
+
+    .overlay-subtitle, .has-chat .overlay-subtitle {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .overlay-event-date, .has-chat .overlay-event-date {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    #play-button {
+        max-width: 36px;
+    }
+}
+
+/* ------------------------------------SMALL SIZE------------------------------------ */
+
+@media only screen and (max-width: 599px) {
+    /* ---------HEADER--------- */
+
+    header {
+        padding: 20px 15px 60px 15px;
+        border-bottom-width: 2px;
+        min-height: 114px;
+    }
+
+    header .button-wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+
+    .img#brand-logo {
+        max-height: 50px;
+        top: 30px;
+    }
+
+    .img.large#brand-logo {
+        max-height: 80px;
+        top: 20px;
+    }
+
+    /* ---------GENERAL--------- */
+
+    .mb-m {
+        margin-bottom: 20px !important;
+    }
+
+    .mb-l {
+        margin-bottom: 30px !important;
+    }
+
+    .spacer {
+        height: 36px;
+    }
+
+    .spacer-small {
+        height: 18px;
+    }
+
+    .material-icons, .material-icons-outlined {
+        margin: 0px 9px 0px 0px;
+        font-size: 16px;
+    }
+
+    footer .logo {
+        margin: 0px 9px 0px 2px;
+    }
+
+    .logo {
+        width: 13px;
+    }
+
+    /* ---------TEXT SETTINGS--------- */
+
+    html, body, .secondary-description,
+    .info-section .info-headline {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .description {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+
+
+
+    .title, .artist-info .subtitle {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    .hashtags, a.link,
+    .info-section, .info-section li {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+
+    a:not(.link), button, div.button,
+    .info-section .additional,
+    .message .user-name,
+    .new-message .message-title,
+    .poster-wrapper p {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .additional {
+        margin-left: 5px;
+    }
+
+    .mobile-info {
+        display: block;
+    }
+
+    .mobile-hide {
+        display: none;
+    }
+
+    /* ---------VIDEO--------- */
+
+    .poster-wrapper .row:nth-child(1) {
+        height: 60%;
+    }
+
+    .poster-wrapper .row:nth-child(2) {
+        height: 40%;
+        padding-bottom: 2%;
+    }
+
+    h1.overlay-title, h2.overlay-subtitle {
+        margin-bottom: 0px;
+    }
+
+    #play-button {
+        max-width: 26px;
+    }
+
+    /* ---------CONTENT--------- */
+
+    .content-wrapper {
+        padding: 20px 0px;
+    }
+
+    .col-wrapper {
+        flex-direction: column;
+    }
+
+
+    .main-content, .col-wrapper .column:nth-child(1),
+    .col-wrapper .column:nth-child(2) {
+        padding: 0px 20px;
+    }
+
+    .main-col-1, .main-col-2, .secondary-col-1, .secondary-col-2 {
+        width: 100%;
+    }
+
+    .secondary-col-1, .main-col-2 {
+        margin-bottom: 10px;
+    }
+
+    .main-col-2 .col-content {
+        margin-right: 0%;
+    }
+
+    .title.mb-m {
+        margin-bottom: 5px !important;
+    }
+
+    .subtitle.mb-l {
+        margin-bottom: 15px !important;
+    }
+
+    .description {
+        margin-bottom: 30px !important;
+    }
+
+    .hashtags {
+        margin-top: 30px !important;
+    }
+
+    .artist-info {
+        margin-bottom: 20px;
+    }
+
+    .artist-img {
+        width: 100%;
+        margin-bottom: 6px;
+    }
+
+    .info-section:not(.section-break), .info-section.mobile-info, .info-section .info-headline {
+        margin-bottom: 15px;
+    }
+
+    .info-section:has(.collapsed) {
+        margin-bottom: 0px;
+    }
+
+    .info-section .info-headline:not(.mobile-hide) {
+        display: flex;
+        align-items: center;
+    }
+
+
+    /* ---------FOOTER--------- */
+
+    footer {
+        padding-bottom: 15px;
+    }
+
+    footer .button-wrapper {
+        padding: 0px 20px;
+    }
+
+    .button-wrapper a.button {
+        margin-bottom: 6px;
+    }
+
+    div.button {
+        margin-top: 15px;
+    }
+}

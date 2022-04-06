@@ -1,0 +1,222 @@
+﻿html, body {
+    background-color: #f5f5f5;
+    color: #000;
+    font-family: 'Work Sans', sans-serif;
+}
+
+h1, h2, h3, h4 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+header {
+    background-color: #000;
+}
+
+.navbar-brand img {
+    width: auto;
+}
+
+.user-thread {
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.user-thread-title, .user-thread-counts {
+    margin-left: 20px;
+    text-align: left;
+    font-size: 18pt;
+}
+
+.user-thread-title + .question, .user-thread-counts + .question {
+    margin-top: 5px;
+}
+
+.user-thread-collapse {
+    margin: 12px;
+    cursor: pointer;
+}
+
+.question {
+    margin: 25px auto;
+    border: 6px solid #10432F;
+    color: #10432F;
+}
+
+
+.question:before {
+    border-left: 12px solid transparent;
+    border-right: 12px solid #10432F;
+    border-top: 12px solid #10432F;
+    border-bottom: 12px solid transparent;
+    right: 20px;
+    bottom: -25px;
+}
+
+.question:after {
+    border-right: 10px solid #f5f5f5;
+    border-top: 10px solid #f5f5f5;
+}
+
+.user-thread .question:after {
+    border-right: 10px solid #f1f1f1;
+    border-top: 10px solid #f1f1f1;
+}
+
+.reply {
+    background-color: #10432F;
+    color: #fff;
+}
+
+.reply:before {
+    border-left: 10px solid #f5f5f5;
+    border-top: 10px solid #f5f5f5;
+}
+
+.user-thread .reply:before {
+    border-left: 10px solid #f1f1f1;
+    border-top: 10px solid #f1f1f1;
+}
+
+.reply:after {
+    border-left: 10px solid #10432F;
+    border-top: 10px solid #10432F;
+}
+
+.btn {
+    border-radius: 0 !important;
+    border-color: #10432F !important;
+    color: #10432F !important;
+    background-color: transparent !important;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    color: #fff !important;
+    background-color: #10432F !important;
+    border-color: #10432F !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    color: #f5f5f5 !important;
+    background-color: #10432F !important;
+    border-color: #10432F !important;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: none;
+}
+
+.replier {
+    color: #ccc;
+}
+
+.stream {
+    padding: 0;
+}
+
+.stream-countdown {
+    color: #fff;
+    right: 40px;
+    bottom: 10px;
+    position: absolute;
+    line-height:inherit;
+    padding-bottom: 0;
+    font-size: 2.5em;
+}
+
+.question-list div {
+    display: inline-block;
+    width: 100%;
+}
+
+.question-list {
+    overflow-y: auto;
+    max-height: 500px;
+    scrollbar-width: thin;
+    scrollbar-color: #10432F #ccc;
+}
+
+.question-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.question-list::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: #ccc;
+}
+
+.question-list::-webkit-scrollbar-thumb {
+    background-color: #10432F;
+    border-radius: 20px;
+    border: none;
+}
+
+@media (min-width: 992px) {
+    .question-list {
+        overflow-y: auto;
+        /* This is the height the video player will show as it's at 75% width of 100vw and 16:9, so (0.75 * 9) / 16 =  0.421875 . The 169 is the h2 height and the question form height*/
+        height: calc((100vw * 0.421875) - 169px);
+        max-height: initial;
+    }
+}
+
+@media (max-width: 991.98px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .reply, .question {
+        font-size: 14px;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    .ask-question-form input[type=submit] {
+        font-size: 14px;
+    }
+
+    .stream-countdown {
+        font-size: 2em;
+    }
+
+    .question-area {
+        padding-top: 1em;
+    }
+}
+
+/* Set other image */
+.theoplayer-skin .vjs-big-play-button:before {
+    content: "";
+    background: url('/custom/mbfw/playbutton.png') no-repeat 0 0;
+    background-size: 100%;
+    display: block;
+}
+/* Remove default THEOplayer image */
+.theo-big-play-button-svg-container svg {
+    display: none;
+}
+/* Remove default spotlight around button on focus */
+.theoplayer-skin:hover .vjs-big-play-button:after,
+.theoplayer-skin .vjs-big-play-button:focus:after {
+    opacity: 0;
+}

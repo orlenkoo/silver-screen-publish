@@ -1,0 +1,108 @@
+﻿/* Sticky footer styles
+-------------------------------------------------- */
+html, body {
+    background-color: #fff;
+    color: #8a8a8a;
+}
+
+header {
+    background-color: #000;
+}
+
+.navbar-brand img {
+    width:auto;
+}
+
+.user-thread {
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.user-thread-title, .user-thread-counts {
+    margin-left: 20px;
+    text-align: left;
+    font-size: 18pt;
+}
+
+.user-thread-title + .question, .user-thread-counts + .question {
+    margin-top: 5px;
+}
+
+.user-thread-collapse {
+    margin: 12px;
+    cursor: pointer;
+}
+
+.question {
+    border: 4px solid #8a8a8a;
+    color: #8a8a8a;
+    font-family: arial;
+}
+
+
+.question:before {
+    border-right: 10px solid #8a8a8a;
+    border-top: 10px solid #8a8a8a;
+}
+
+.question:after {
+    border-right: 10px solid #fff;
+    border-top: 10px solid #fff;
+}
+
+.user-thread .question:after {
+    border-right: 10px solid #f1f1f1;
+    border-top: 10px solid #f1f1f1;
+}
+
+.reply {
+    background-color: #000;
+    color: #fff;
+}
+
+.reply:before {
+    border-left: 10px solid #fff;
+    border-top: 10px solid #fff;
+}
+
+.user-thread .reply:before {
+    border-left: 10px solid #f1f1f1;
+    border-top: 10px solid #f1f1f1;
+}
+
+.reply:after {
+    border-left: 10px solid #000;
+    border-top: 10px solid #000;
+}
+
+.btn {
+    border-radius: 0 !important;
+    border-color: #000 !important;
+    color: #000 !important;
+    background-color: transparent !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    color: #fff !important;
+    background-color: #000 !important;
+    border-color: #000 !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    color: #fff !important;
+    background-color: #000 !important;
+    border-color: #000 !important;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: none;
+}
+
+.replier {
+    color: #ccc;
+}

@@ -1,0 +1,261 @@
+﻿html, body {
+    background-color: #e2e2e2;
+    color: #000;
+    font-family: 'Glegoo', 'Josefin Sans', sans-serif;
+}
+
+h1, h2, h3, h4 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+header {
+    background-color: #e2e2e2;
+    background-image: none;
+}
+
+.navbar-brand img {
+    width: auto;
+}
+
+.user-thread {
+    background-color: #e2e2e2;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.user-thread-title, .user-thread-counts {
+    margin-left: 20px;
+    text-align: left;
+    font-size: 18pt;
+}
+
+.user-thread-title + .question, .user-thread-counts + .question {
+    margin-top: 5px;
+}
+
+.user-thread-collapse {
+    margin: 12px;
+    cursor: pointer;
+}
+
+.question {
+    margin: 25px auto;
+    border: 6px solid #000000;
+    color: #000000;
+}
+
+
+.question:before {
+    border-left: 12px solid transparent;
+    border-right: 12px solid #000000;
+    border-top: 12px solid #000000;
+    border-bottom: 12px solid transparent;
+    right: 20px;
+    bottom: -25px;
+}
+
+.question:after {
+    border-right: 10px solid #e2e2e2;
+    border-top: 10px solid #e2e2e2;
+}
+
+.user-thread .question:after {
+    border-right: 10px solid #e2e2e2;
+    border-top: 10px solid #e2e2e2;
+}
+
+.reply {
+    background-color: #000000;
+    color: #fff;
+}
+
+.reply:before {
+    border-left: 10px solid #e2e2e2;
+    border-top: 10px solid #e2e2e2;
+}
+
+.user-thread .reply:before {
+    border-left: 10px solid #e2e2e2;
+    border-top: 10px solid #e2e2e2;
+}
+
+.reply:after {
+    border-left: 10px solid #000000;
+    border-top: 10px solid #000000;
+}
+
+.btn {
+    border-radius: 0 !important;
+    border-color: #000000 !important;
+    color: #000000 !important;
+    background-color: transparent !important;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    color: #fff !important;
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    color: #f5f5f5 !important;
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: none;
+}
+
+.replier {
+    color: #ccc;
+}
+
+.stream {
+    padding: 0;
+}
+
+.stream-countdown {
+    color: #fff;
+    right: 40px;
+    bottom: 10px;
+    position: absolute;
+    line-height: inherit;
+    padding-bottom: 0;
+    font-size: 2.5em;
+}
+
+.question-list div {
+    display: inline-block;
+    width: 100%;
+}
+
+.question-list {
+    overflow-y: auto;
+    max-height: 500px;
+    scrollbar-width: thin;
+    scrollbar-color: #000000 #ccc;
+}
+
+.question-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.question-list::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: #ccc;
+}
+
+.question-list::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 20px;
+    border: none;
+}
+
+.question-area {
+    background-color: rgba(256, 256, 256, 0.5);
+}
+
+.stream {
+    padding-top: 18em;
+    background-image: url("/custom/universal/alf5.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width:unset;
+}
+
+@media (min-width: 768px) {
+    .stream {
+        padding-top: 18em;
+    }
+}
+
+@media (min-width: 992px) {
+    .stream {
+        padding-top: 18em;
+        background: none;
+    }
+    html {
+        min-height: 100%;
+    }
+
+    body {
+        background-image: url("/custom/universal/alf5.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 100%;
+    }
+}
+
+@media (max-width: 991.98px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .reply, .question {
+        font-size: 14px;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    .ask-question-form input[type=submit] {
+        font-size: 14px;
+    }
+
+    .stream-countdown {
+        font-size: 2em;
+    }
+
+    .question-area {
+        padding-top: 1em;
+    }
+}
+
+/* Set other image */
+.theoplayer-skin .vjs-big-play-button:before {
+    content: "";
+    background: url('https://www.silver-screen.de/custom/mbfw/playbutton.png') no-repeat 0 0;
+    background-size: 100%;
+    display: block;
+}
+/* Remove default THEOplayer image */
+.theo-big-play-button-svg-container svg {
+    display: none;
+}
+/* Remove default spotlight around button on focus */
+.theoplayer-skin:hover .vjs-big-play-button:after,
+.theoplayer-skin .vjs-big-play-button:focus:after {
+    opacity: 0;
+}
+
+

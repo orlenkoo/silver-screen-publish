@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+    <title>Test DRM</title>
+    <meta name="viewport" content="width=device‐width, initial‐scale=1.0" />
+    <link rel="stylesheet" href="/css/site.css"  />
+    <link rel="stylesheet" type="text/css" href="https://cdn.myth.theoplayer.com/ace1f596-e2d4-4b2e-8b94-abf9e706ca7d/ui.css" />
+    <style>
+        input {
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div style="max-width:500px;">
+        <div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
+    </div>
+    <h2>Player using: <span id="playerUsing"></span></h2>
+    <h3>HLS</h3>
+    <p>HLS_STREAM_URL: <input id="HLS_STREAM_URL" /></p>
+    <p>LICENSE_KEY_URL_FAIRPLAY: <input id="LICENSE_KEY_URL_FAIRPLAY" /></p>
+    <p>CERTIFICATE_URL: <input id="CERTIFICATE_URL" /></p>
+    <hr />
+    <h3>Dash</h3>
+    <p>DASH_STREAM_URL: <input id="DASH_STREAM_URL" /></p>
+    <p>LICENSE_KEY_URL_PLAYREADY: <input id="LICENSE_KEY_URL_PLAYREADY" /></p>
+    <p>LICENSE_KEY_URL_WIDEVINE: <input id="LICENSE_KEY_URL_WIDEVINE" /></p>
+    <button id="btnUpdate">Update</button>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+    <script type="text/javascript" src="https://cdn.myth.theoplayer.com/ace1f596-e2d4-4b2e-8b94-abf9e706ca7d/THEOplayer.js"></script>
+    <script type="text/javascript" src="/js/testdrm.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿:root {
+    --main-color: #FFCC00;
+    --main-color-lighter: #FFCC00;
+    --umg-background-color: rgb(229,184,247);
+}
+
+/* Replace shadow color: same as background with .5 opacity */
+.shadow.custom-color {
+    filter: drop-shadow(0px 4px 40px rgba(229, 184, 247, 0.5));
+}
+
+/* Replace logo */
+.img#brand-logo {
+    top: 16px;
+    height: 120px;
+}
+
+@media only screen and (max-width: 599px) {
+    .img#brand-logo {
+        max-height: 80px;
+        top: 20px;
+    }
+}
