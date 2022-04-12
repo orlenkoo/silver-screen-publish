@@ -527,8 +527,7 @@ img#play-button:hover {
 /* ---------CONTENT--------- */
 
 .content-wrapper {
-    /*padding: 60px;*/
-    padding: 60px 0px;
+    padding: 60px 0px 0px 0px;
 }
 
 .main-content {
@@ -598,6 +597,7 @@ img#play-button:hover {
 
 footer {
     width: 100%;
+    padding-top: 60px;
     padding-bottom: 60px;
 }
 
@@ -748,6 +748,11 @@ input, select, textarea, .btn, .form-control {
 
 .has-countdown .question-area {
     display:none;
+}
+
+.client-hosted-embed {
+    height: 100%;
+    width: 100%;
 }
 
 .nick-name-chooser .question-list {

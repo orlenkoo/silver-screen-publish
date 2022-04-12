@@ -5,7 +5,7 @@ var chatMode;
 var nickNameMode;
 var eventBriteKey;
 var player = window["silver-screen-player"];
-
+var clientHosted;
 $(function () {
     userKey = $("#userKey").val();
     projectKey = $("#projectKey").val();
@@ -13,11 +13,14 @@ $(function () {
     chatMode = $("#chatMode").val();
     nickNameMode = $("#nickNameMode").val();
     eventBriteKey = $("#eventBriteKey").val();
+    clientHosted = $("#clientHosted").val() == "true";
 
     if ($(".has-countdown").length > 0) {
         startCountdown();
     } else {
-        player.initialize();
+        if (!clientHosted)
+            player.initialize();
+
         prepareChat();
     }
 
@@ -156,7 +159,9 @@ function startDynamicEventHub() {
         } else if (dynamicEvent.isTechnicalDifficultiesEnabled) {
             $("body").addClass("technical-difficulties");
         } else {
-            player.initialize();
+            if (!clientHosted)
+                player.initialize();
+
             prepareChat();
         }
     };
@@ -288,7 +293,9 @@ function startCountdown() {
         var now = new Date().getTime();
         var t = date - now;
         if (t < 0) {
-            player.initialize();
+            if(!clientHosted)
+                player.initialize();
+
             prepareChat();
             clearInterval(interval);
             $(".has-countdown").removeClass("has-countdown");

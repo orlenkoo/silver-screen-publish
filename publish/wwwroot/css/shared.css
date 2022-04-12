@@ -7,9 +7,11 @@
     position: relative;
 }
 
-.has-countdown .video-js, .end-of-event .video-js, .technical-difficulties .video-js {
+.has-countdown .video-js, .end-of-event .video-js, .technical-difficulties .video-js,
+.has-countdown .client-hosted-embed, .end-of-event .client-hosted-embed, .technical-difficulties .client-hosted-embed {
     display: none;
 }
+
 
 .has-countdown .stream-countdown-wrapper,
 .end-of-event .end-of-event-wrapper,

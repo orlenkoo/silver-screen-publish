@@ -3,9 +3,12 @@ const userKey = $("#userKey").val();
 var userChatKey = $("#userChatKey").val();
 var chatMode = $("#chatMode").val();
 var player = window["silver-screen-player"];
+var clientHosted = $("#clientHosted").val() == "true";
 
 $(function () {
-    player.initialize();
+    if (!clientHosted)
+        player.initialize();
+
     startHub();
 });
 

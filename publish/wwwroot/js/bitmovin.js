@@ -37,19 +37,79 @@ var SilverScreen;
             this.player.on("paused", () => {
                 $(".video-js").addClass("vjs-paused");
             });
-            const sourceConfig = {
-                //"title": "Default Demo Source Config",
-                //"description": "Select another example in \"Step 4 - Load a Source\" to test it here",
-                //"dash": "https://bitmovin-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd",
+            let sourceConfig = {
                 "hls": this.watchUrl,
-                //"smooth": "https://test.playready.microsoft.com/smoothstreaming/SSWSS720H264/SuperSpeedway_720.ism/manifest",
-                //"progressive": "https://bitmovin-a.akamaihd.net/content/MI201109210084_1/MI201109210084_mpeg-4_hd_high_1080p25_10mbits.mp4",
                 "poster": this.backgroundPoster
             };
+            if (this.DRMEnabled) {
+                sourceConfig.dash = this.DASHStreamUrl;
+                sourceConfig.drm = {
+                    widevine: {
+                        LA_URL: this.DASHWidevineLicenseAcquisitionURL
+                    },
+                    playready: {
+                        LA_URL: this.DASHPlayreadyLicenseAcquisitionURL
+                    },
+                    fairplay: {
+                        LA_URL: this.HLSLicenseAcquisitionURL,
+                        certificateURL: this.HLSCertificateURL,
+                        prepareContentId: function (contentId) {
+                            var uri = contentId;
+                            var uriParts = uri.split('://', 1);
+                            var protocol = uriParts[0].slice(-3);
+                            uriParts = uri.split(';', 2);
+                            contentId = uriParts.length > 1 ? uriParts[1] : '';
+                            return protocol.toLowerCase() == 'skd' ? contentId : '';
+                        },
+                        prepareLicenseAsync: function (ckc) {
+                            return new Promise(function (resolve, reject) {
+                                var reader = new FileReader();
+                                reader.addEventListener('loadend', function () {
+                                    var array = new Uint8Array(reader.result);
+                                    resolve(array);
+                                });
+                                reader.addEventListener('error', function () {
+                                    reject(reader.error);
+                                });
+                                reader.readAsArrayBuffer(ckc);
+                            });
+                        },
+                        prepareMessage: function (event, session) {
+                            return new Blob([event.message], { type: 'application/octet-binary' });
+                        },
+                        headers: [{
+                                name: 'content-type',
+                                value: 'application/octet-stream'
+                            }],
+                        useUint16InitData: true,
+                        licenseResponseType: 'blob'
+                    }
+                };
+            }
             this.player.load(sourceConfig);
         }
         stop() {
             this.player.unload();
+        }
+        isIOS() {
+            var appleDevices = [
+                'iPad Simulator',
+                'iPhone Simulator',
+                'iPod Simulator',
+                'iPad',
+                'iPhone',
+                'iPod',
+                'Safari',
+                'Mac'
+            ];
+            var platform = navigator.platform;
+            for (var i = 0, len = appleDevices.length; i < len; i++) {
+                if (platform.indexOf(appleDevices[i]) > -1)
+                    return true;
+            }
+            if (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+                return true;
+            return false;
         }
     }
     SilverScreen.BitmovinPlayer = BitmovinPlayer;

@@ -42,6 +42,15 @@ header {
     display: none;
 }
 
+.client-hosted-embed {
+    height: 100%;
+    width: 100%;
+}
+
+.has-countdown .client-hosted-embed {
+    display: none;
+}
+
 .ask-question-form textarea {
     max-width:100%;
     margin-right: 10px;
