@@ -13,6 +13,7 @@ $(function () {
     bindMetrics();
     bindTabHistory();
     bindEventBrite();
+    RollIframeStyle($("#iframe-tab input[name=IsIframe]").is(":checked"));
 
     $(".js-change-drm").on("change", function () {
         $(".js-wowza-secure-token").addClass("d-none");
@@ -49,7 +50,29 @@ $(function () {
             $(".js-client-hosted-stream-url").removeClass("d-none");
         }
     });
+
+    $("#iframe-tab input[name=IsIframe]").on("change", function () {
+        RollIframeStyle($(this).is(":checked"))
+    })
+
+    $("#btn-copy-iframe-code").click(function (e) {
+        e.preventDefault();
+        $("#txt-iframe-code").select();
+        document.execCommand('copy');
+    })
 });
+
+function RollIframeStyle(isIframe) {
+    if (isIframe) {
+        $("#iframe-tab input[name=HideHeader]").removeAttr("disabled");
+        $("#iframe-tab input[name=HideFooter]").removeAttr("disabled");
+        $("#iframe-tab input[name=FullWidth]").removeAttr("disabled");
+    } else {
+        $("#iframe-tab input[name=HideHeader]").attr("disabled", true);
+        $("#iframe-tab input[name=HideFooter]").attr("disabled", true);
+        $("#iframe-tab input[name=FullWidth]").attr("disabled", true);
+    }
+}
 
 function bindContentAdd() {
     $(".js-content-property").on("change", function (e) {
