@@ -31,6 +31,7 @@
     ".NETCoreApp,Version=v3.1": {
       "SilverRoom.Web/1.0.0": {
         "dependencies": {
+          "AWSSDK.S3": "3.7.8.23",
           "CsvHelper": "15.0.9",
           "ElmahCore": "2.0.6",
           "ElmahCore.MySql": "2.1.1",
@@ -306,6 +307,31 @@
         },
         "compile": {
           "SilverRoom.Web.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.7.10.11": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.10.11"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {}
+        }
+      },
+      "AWSSDK.S3/3.7.8.23": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.10.11"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.8.23"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {}
         }
       },
       "BouncyCastle.NetCore/1.8.3": {
@@ -2744,6 +2770,7 @@
       },
       "SilverRoom.Core/1.0.0": {
         "dependencies": {
+          "AWSSDK.S3": "3.7.8.23",
           "CsvHelper": "15.0.9",
           "Hangfire.Core": "1.7.20",
           "Microsoft.AspNetCore.Identity": "2.2.0",
@@ -4297,6 +4324,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AWSSDK.Core/3.7.10.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-B+M7ggPC0FogATRPQxDXL0eTusCQtXulW4zCuX39yiHV8+u9MEXRytcAw0ZA3zFBYYx6ovl9lklho6OQo1DRRQ==",
+      "path": "awssdk.core/3.7.10.11",
+      "hashPath": "awssdk.core.3.7.10.11.nupkg.sha512"
+    },
+    "AWSSDK.S3/3.7.8.23": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PV+mMf/WuabWEaVOgZtKH5Kpo7rnuU87DigmihxfV9j4+NyIx4LxEQt1N2eDuOG0x5UzM7ZKelsr9r0SNoPkng==",
+      "path": "awssdk.s3/3.7.8.23",
+      "hashPath": "awssdk.s3.3.7.8.23.nupkg.sha512"
     },
     "BouncyCastle.NetCore/1.8.3": {
       "type": "package",

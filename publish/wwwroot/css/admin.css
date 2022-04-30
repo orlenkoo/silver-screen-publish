@@ -1,1 +1,15 @@
-﻿
+﻿.tag-clip {
+    color: green;
+    font-style: italic;
+    cursor: pointer;
+}
+.tag-clip:hover { text-decoration: underline; }
+table .tag-clip { font-size: 12px; }
+
+.input-file-s3 {
+    margin-left: 15px;
+}
+.preview-image img { 
+    width: 100px; 
+    padding-top: 10px;
+}

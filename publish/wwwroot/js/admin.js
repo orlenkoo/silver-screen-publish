@@ -13,6 +13,8 @@ $(function () {
     bindMetrics();
     bindTabHistory();
     bindEventBrite();
+    bindTag();
+    bindS3Uploader();
     RollIframeStyle($("#iframe-tab input[name=IsIframe]").is(":checked"));
 
     $(".js-change-drm").on("change", function () {
@@ -60,17 +62,111 @@ $(function () {
         $("#txt-iframe-code").select();
         document.execCommand('copy');
     })
+
 });
+
+function bindS3Uploader() {
+    $(".input-file-s3").change(function () {
+        if ($(this)[0].files.length === 0) return;
+
+        var $this = $(this);
+
+        var formData = new FormData();
+        formData.append("file", $(this)[0].files[0]);
+
+        $.ajax({
+            url: "/admin/upload/s3",
+            data: formData,
+            type: "POST",
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                $this.prop("disabled", true);
+            },
+            success: function (data) {
+                $this.prop("disabled", false);
+                if (data.success) {
+                    $this.next().val(data.msg);
+                    $this.next().next().find("img").attr("src", data.msg);
+                }
+            }
+        });
+    })
+
+    $(".input-img-preview").change(function () {
+        $(this).next().find("img").attr("src", $(this).val());
+    })
+}
+
+function bindTag() {
+    $.get("/admin/project/tags", function (data) {
+        $("#input-project-tag").autocomplete({
+            source: data,
+            select: function (event, ui) {
+                addTag(ui.item.value);
+                $(this).val("")
+                return false;
+            }
+        });
+    })
+
+    $("#input-project-tag").keydown(function (e) {
+        if (e.which == 13) {
+            e.preventDefault();
+
+            if ($(this).val() != "") {
+                addTag($(this).val());
+                $(this).val("");
+            }
+        }
+    })
+
+    $("#project-tags a").click(function (e) {
+        e.preventDefault();
+
+        $(this).remove();
+        calcTags();
+    })
+}
+
+function addTag(tagName) {
+    var isExist = false;
+
+    $("#project-tags a").each(function () {
+        if ($(this).text() == tagName) isExist = true;
+    })
+
+    if (!isExist) {
+        $("#project-tags").append($("<a href='#' style='margin-left:5px;'>" + tagName + "</a>").click(function (e) {
+            e.preventDefault();
+            $(this).remove();
+            calcTags();
+        }));
+
+        calcTags();
+    }
+}
+
+function calcTags() {
+    let projectTags = "";
+
+    $("#project-tags a").each(function () {
+        if (projectTags == "") projectTags += $(this).text();
+        else projectTags += "," + $(this).text();
+    })
+
+    $("#input-project-tags").val(projectTags);
+}
 
 function RollIframeStyle(isIframe) {
     if (isIframe) {
-        $("#iframe-tab input[name=HideHeader]").removeAttr("disabled");
-        $("#iframe-tab input[name=HideFooter]").removeAttr("disabled");
-        $("#iframe-tab input[name=FullWidth]").removeAttr("disabled");
+        $("#iframe-tab input[name=HideHeader]").prop("checked", true);
+        $("#iframe-tab input[name=HideFooter]").prop("checked", true);
+        $("#iframe-tab input[name=FullWidth]").prop("checked", true);
     } else {
-        $("#iframe-tab input[name=HideHeader]").attr("disabled", true);
-        $("#iframe-tab input[name=HideFooter]").attr("disabled", true);
-        $("#iframe-tab input[name=FullWidth]").attr("disabled", true);
+        $("#iframe-tab input[name=HideHeader]").prop("checked", false);
+        $("#iframe-tab input[name=HideFooter]").prop("checked", false);
+        $("#iframe-tab input[name=FullWidth]").prop("checked", false);
     }
 }
 
