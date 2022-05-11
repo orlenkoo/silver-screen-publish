@@ -8,7 +8,6 @@ $(function () {
     $('#datetimepicker').datetimepicker({ sideBySide: true, allowInputToggle: true, format: "DD MMM yyyy HH:mm" });
 
     bindContentAdd();
-    bindContentRemove();
     bindQRSizes();
     bindMetrics();
     bindTabHistory();
@@ -63,6 +62,15 @@ $(function () {
         document.execCommand('copy');
     })
 
+    $("#input-countdown-preview").change(function () {
+        const url = new URL($(this).parent().parent().find("a").attr("href") + "?preview=true");
+
+        url.search = "";
+        if ($(this).is(":checked")) url.search = "?preview=true";
+
+        $(this).parent().parent().find("a").attr("href", url);
+    })
+
 });
 
 function bindS3Uploader() {
@@ -111,13 +119,31 @@ function bindTag() {
     })
 
     $("#input-project-tag").keydown(function (e) {
-        if (e.which == 13) {
+        var keyCode = e.keyCode || e.which;
+
+        if (keyCode == 13) {
             e.preventDefault();
 
             if ($(this).val() != "") {
                 addTag($(this).val());
                 $(this).val("");
             }
+        } else {
+            if (keyCode == 8 || keyCode == 189) return true;
+            if (48 <= keyCode && keyCode <= 57)
+                return true;
+            if (65 <= keyCode && keyCode <= 90)
+                return true;
+            if (97 <= keyCode && keyCode <= 122)
+                return true;
+            return false;
+        }
+    })
+
+    $("#btn-add-tag").click(function () {
+        if ($("#input-project-tag").val() != "") {
+            addTag($("#input-project-tag").val());
+            $("#input-project-tag").val("");
         }
     })
 
@@ -171,24 +197,18 @@ function RollIframeStyle(isIframe) {
 }
 
 function bindContentAdd() {
-    $(".js-content-property").on("change", function (e) {
-        $(".js-content").attr("placeholder", $(".js-content-property option:selected").data("default-value"));
-    });
-
     $(".js-content-submit").off("click").on("click", function (e) {
         e.preventDefault();
-        var name = $(".js-content-property").val();
-        $(".js-content-property").removeClass("is-invalid");
-        $(".js-content").removeClass("is-invalid");
 
-        if (!name) {
-            $(".js-content-property").addClass("is-invalid");
-        }
+        var $content = $(this).parent().siblings(".js-content").find("input");
 
-        var content = $(".js-content").val();
+        var name = $(this).attr("content-name");
+        var content = $content.val();
 
         if (!content) {
-            $(".js-content").addClass("is-invalid");
+            $content.addClass("is-invalid");
+        } else {
+            $content.removeClass("is-invalid");
         }
 
         if (!name || !content)
@@ -203,34 +223,29 @@ function bindContentAdd() {
                 content: content
             }),
             success: function (response) {
-                $(".js-contents-table").html(response);
-                bindContentRemove();
-                $(".js-content-property").val("");
-                $(".js-content").val("");
+                if (response.success) {
+                    $content.removeClass("changed");
+                } else {
+                    alert(response.msg);
+                }
             },
             error: function () {
                 alert("An error occurred");
             }
         });
     });
-}
 
-function bindContentRemove() {
-    $(".js-remove-content").off("click").on("click", function (e) {
-        let projectContentId = $(e.currentTarget).data("id");
-        $.ajax({
-            type: "POST",
-            url: `/project/${projectId}/contents/${projectContentId}/remove`,
-            success: function (response) {
-                $(".js-contents-table").html(response);
-                bindContentRemove();
-            },
-            error: function () {
-                alert("An error occurred");
+    $(".js-content input").change(function () {
+        $(this).addClass("changed");
+    })
+
+    $("#js-content-save-all").click(function () {
+        $(".js-content input").each(function () {
+            if ($(this).hasClass("changed")) {
+                $(this).parent().parent().find(".js-content-submit").click();
             }
-        });
-
-    });
+        })
+    })
 }
 
 function bindTabHistory() {

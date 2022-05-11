@@ -21,6 +21,9 @@ var SilverScreen;
                 })
                     .catch(this.onHubError);
             };
+            this.sendHeartBeat = (userKey, cookieId) => {
+                this.eventHub.invoke("SendHeartBeat", this.projectKey, userKey, cookieId);
+            };
             this.onHubError = (err) => {
                 console.log(err);
                 //TODO: Translation

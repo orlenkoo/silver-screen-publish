@@ -725,6 +725,11 @@ body {
     min-height: 100vh;
 }
 
+body.hide-header {
+    min-height: auto;
+}
+
+
 input, select, textarea, .btn, .form-control {
     box-shadow: none !important;
     border-radius: 0;

@@ -17,6 +17,12 @@ var SilverScreen;
             this.element = document.querySelector(".theoplayer-container");
             this.PlayerKey = $("#PlayerKey").val();
         }
+        get isPlaying() {
+            if (this.player && this.player.isPlaying())
+                return true;
+            else
+                return false;
+        }
         initialize() {
             var playerConfig = {
                 "key": this.PlayerKey,

@@ -13,3 +13,7 @@ table .tag-clip { font-size: 12px; }
     width: 100px; 
     padding-top: 10px;
 }
+
+input.changed {
+    background: #d4ecf3;
+}

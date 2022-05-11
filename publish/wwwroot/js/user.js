@@ -6,6 +6,9 @@ var nickNameMode;
 var eventBriteKey;
 var player = window["silver-screen-player"];
 var clientHosted;
+var heartBeatInterval;
+var viewCookieKey;
+
 $(function () {
     userKey = $("#userKey").val();
     projectKey = $("#projectKey").val();
@@ -14,6 +17,8 @@ $(function () {
     nickNameMode = $("#nickNameMode").val();
     eventBriteKey = $("#eventBriteKey").val();
     clientHosted = $("#clientHosted").val() == "true";
+    heartBeatInterval = $("#heartBeatInterval").val();
+    viewCookieKey = $("#viewCookieKey").val();
 
     if ($(".has-countdown").length > 0) {
         startCountdown();
@@ -110,7 +115,7 @@ function prepareChat() {
                 }),
                 success: function (response) {
                     $("#userKey").val(response.key);
-                    $("#chatkey").val(response.chatKey);
+                    $("#userChatKey").val(response.chatKey);
                     userKey = response.key;
                     userChatKey = response.chatKey;
                     if (response.messages && response.messages.length > 0) {
@@ -178,7 +183,24 @@ function startDynamicEventHub() {
         $(".alternate-login-wrapper").show();
     }
 
+    dynamicEvent.onConnected = () => {
+        if (heartBeatInterval) {
+            const cookieId = getCookie(viewCookieKey);
+            setInterval(() => {
+                if (player.isPlaying) {
+                    dynamicEvent.sendHeartBeat(userKey, cookieId);
+                }
+            }, heartBeatInterval * 60 * 1000);
+        }
+    }
+
     dynamicEvent.startHub(projectKey, eventBriteKey);
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
 function startHub(triggerSend) {
