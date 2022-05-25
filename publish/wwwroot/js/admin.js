@@ -239,7 +239,7 @@ function bindContentAdd() {
         $(this).addClass("changed");
     })
 
-    $("#js-content-save-all").click(function () {
+    $(".js-content-save-all").click(function () {
         $(".js-content input").each(function () {
             if ($(this).hasClass("changed")) {
                 $(this).parent().parent().find(".js-content-submit").click();
