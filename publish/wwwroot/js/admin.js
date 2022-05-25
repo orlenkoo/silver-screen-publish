@@ -225,8 +225,9 @@ function bindContentAdd() {
             success: function (response) {
                 if (response.success) {
                     $content.removeClass("changed");
+                    $("#alert-container").html("<div class='alert alert-success' role='alert'>" + response.msg + "</div>");
                 } else {
-                    alert(response.msg);
+                    $("#alert-container").html("<div class='alert alert-danger' role='alert'>" + response.msg + "</div>");
                 }
             },
             error: function () {
