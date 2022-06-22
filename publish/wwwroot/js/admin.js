@@ -81,6 +81,7 @@ function bindS3Uploader() {
 
         var formData = new FormData();
         formData.append("file", $(this)[0].files[0]);
+        formData.append("projectId", projectId);
 
         $.ajax({
             url: "/admin/upload/s3",

@@ -7,6 +7,7 @@ var eventBriteKey;
 var player = window["silver-screen-player"];
 var clientHosted;
 var heartBeatInterval;
+var hbInterval;
 var viewCookieKey;
 
 $(function () {
@@ -101,43 +102,50 @@ function prepareChat() {
     }
     else if (nickNameMode == SilverScreen.NickNameMode.HiddenNick) 
     {
-        //only need to join the chat hub if we've asked a question
-        $(".js-ask-click").on("click", function (e) {
-            e.preventDefault();
+        if (chatMode == SilverScreen.ChatMode.PrivateChat) {
+            //only need to join the chat hub if we've asked a question
+            $(".js-ask-click").on("click", function (e) {
+                e.preventDefault();
 
-            $.ajax({
-                type: "POST",
-                url: "/pick-nickname/" + projectKey,
-                contentType: "application/json",
-                dataType: "json",
-                data: JSON.stringify({
-                    name: ""
-                }),
-                success: function (response) {
-                    $("#userKey").val(response.key);
-                    $("#userChatKey").val(response.chatKey);
-                    userKey = response.key;
-                    userChatKey = response.chatKey;
-                    if (response.messages && response.messages.length > 0) {
-                        for (var i = 0; i < response.messages.length; i++) {
-                            var replyHtml = getMessageHtml(response.messages[i]);
-                            $(".questions").append(replyHtml);
-                        }
-                    }
-
-                    //signal a message needs sending
-                    startHub(true);
-                },
-                error: function (response) {
-                    //TODO: Need to show this in the chat error?
-                    let error = "An error occurred";
-                    if (response.responseJSON && response.responseJSON.error)
-                        error = response.responseJSON.error;
-                }
+                joinChatHiddenNickname(true);
             });
-
-        });
+        } else {
+            joinChatHiddenNickname(false);
+        }
     }
+}
+
+function joinChatHiddenNickname(triggerSend) {
+    $.ajax({
+        type: "POST",
+        url: "/pick-nickname/" + projectKey,
+        contentType: "application/json",
+        dataType: "json",
+        data: JSON.stringify({
+            name: ""
+        }),
+        success: function (response) {
+            $("#userKey").val(response.key);
+            $("#userChatKey").val(response.chatKey);
+            userKey = response.key;
+            userChatKey = response.chatKey;
+            if (response.messages && response.messages.length > 0) {
+                for (var i = 0; i < response.messages.length; i++) {
+                    var replyHtml = getMessageHtml(response.messages[i]);
+                    $(".questions").append(replyHtml);
+                }
+            }
+
+            //signal a message needs sending
+            startHub(triggerSend);
+        },
+        error: function (response) {
+            //TODO: Need to show this in the chat error?
+            let error = "An error occurred";
+            if (response.responseJSON && response.responseJSON.error)
+                error = response.responseJSON.error;
+        }
+    });
 }
 
 function startDynamicEventHub() {
@@ -184,9 +192,9 @@ function startDynamicEventHub() {
     }
 
     dynamicEvent.onConnected = () => {
-        if (heartBeatInterval) {
+        if (heartBeatInterval && !hbInterval) {
             const cookieId = getCookie(viewCookieKey);
-            setInterval(() => {
+            hbInterval = setInterval(() => {
                 if (player.isPlaying) {
                     dynamicEvent.sendHeartBeat(userKey, cookieId);
                 }
