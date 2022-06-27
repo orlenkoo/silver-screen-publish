@@ -389,6 +389,7 @@ header .material-icons, header .material-icons-outlined {
 .video-wrapper {
     width: 100%;
     height: 56.25%;
+    flex-wrap: wrap;
 }
 
 .poster-wrapper,
@@ -736,15 +737,14 @@ input, select, textarea, .btn, .form-control {
 }
 
 .has-chat .video-wrapper-inner {
-    flex: 0 0 70%;
+    padding: 0;
 }
 
-.has-countdown.has-chat .video-wrapper-inner {
+.video-wrapper-inner {
     flex: 0 0 100%;
 }
 
 .question-area {
-    flex: 0 0 30%;
     overflow: hidden;
     overflow-y: auto;
     background: rgba(0, 0, 0, 0.5);
@@ -974,7 +974,7 @@ input, select, textarea, .btn, .form-control {
 }
 @media only screen and (min-width: 1440px) {
     body:not(.full-width) .question-area {
-        height: 567px;
+        height: 607px;
     }
 
     body:not(.full-width) .question-list {
