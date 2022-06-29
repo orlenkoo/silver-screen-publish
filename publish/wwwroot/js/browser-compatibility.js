@@ -17,12 +17,15 @@
 		const closeButton = document.createElement("button");
 		closeButton.innerHTML = "X";
 
-		alertWarning.appendChild(document.createTextNode("You are using an outdated browser. To enjoy this event without technical hitches, please close this browser and access it in Chrome, Safari, Firefox or Edge."));
+		alertWarning.appendChild(document.createTextNode(browser_warning));
 		alertWarning.style.background = "#ffcc00";
 		alertWarning.style.padding = "10px";
 		alertWarning.style.position = "relative";
+		alertWarning.style.width = "100%";
+
 		closeButton.style.position = "absolute";
 		closeButton.style.right = "10px";
+		closeButton.style.top = "20px";
 		alertWarning.appendChild(closeButton);
 
 		document.body.insertBefore(alertWarning, document.body.firstChild);
