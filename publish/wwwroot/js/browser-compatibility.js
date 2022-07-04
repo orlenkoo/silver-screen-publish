@@ -20,6 +20,7 @@
 		alertWarning.appendChild(document.createTextNode(browser_warning));
 		alertWarning.style.background = "#ffcc00";
 		alertWarning.style.padding = "10px";
+		alertWarning.style.paddingRight = "30px";
 		alertWarning.style.position = "relative";
 		alertWarning.style.width = "100%";
 
