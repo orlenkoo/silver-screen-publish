@@ -900,7 +900,12 @@ input, select, textarea, .btn, .form-control {
 
 @media only screen and (min-width: 992px) {
     .question-area {
-        height: calc((0.7 * 1080/1920 * 100vw) - 7.5px);
+        height: calc((0.7 * 1080/1920 * 100vw) - 0.5px);
+        border-left: 1px solid var(--main-color);
+    }
+
+    .col-lg-6.question-area {
+        height: calc((0.5 * 1080/1920 * 100vw) - 0.5px);
         border-left: 1px solid var(--main-color);
     }
 
@@ -914,6 +919,10 @@ input, select, textarea, .btn, .form-control {
 
     .question-list {
         height: calc((0.7 * 1080/1920 * 100vw) - 85px);
+    }
+
+    .col-lg-6.question-area .question-list {
+        height: calc((0.5 * 1080/1920 * 100vw) - 85px);
     }
 
     .private-chat .question-list {
@@ -977,8 +986,16 @@ input, select, textarea, .btn, .form-control {
         height: 607px;
     }
 
+    body:not(.full-width) .col-lg-6.question-area {
+        height: 405px;
+    }
+
     body:not(.full-width) .question-list {
         height: 493px;
+    }
+
+    body:not(.full-width) .col-lg-6.question-area .question-list {
+        height: 320px;
     }
 }
 
