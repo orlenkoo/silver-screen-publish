@@ -201,10 +201,11 @@ function bindContentAdd() {
     $(".js-content-submit").off("click").on("click", function (e) {
         e.preventDefault();
 
-        var $content = $(this).parent().siblings(".js-content").find("input");
+        var $content = $(this).siblings("input");
 
         var name = $(this).attr("content-name");
         var content = $content.val();
+        var language = $(this).attr("language");
 
         if (!content) {
             $content.addClass("is-invalid");
@@ -221,7 +222,8 @@ function bindContentAdd() {
             contentType: "application/json",
             data: JSON.stringify({
                 name: name,
-                content: content
+                content: content,
+                language: language
             }),
             success: function (response) {
                 if (response.success) {
@@ -244,7 +246,7 @@ function bindContentAdd() {
     $(".js-content-save-all").click(function () {
         $(".js-content input").each(function () {
             if ($(this).hasClass("changed")) {
-                $(this).parent().parent().find(".js-content-submit").click();
+                $(this).siblings(".js-content-submit").click();
             }
         })
     })

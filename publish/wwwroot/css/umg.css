@@ -1060,3 +1060,21 @@ input, select, textarea, .btn, .form-control {
 .bmpui-ui-hugeplaybacktogglebutton {
     padding: 0;
 }
+
+.language-wrapper { margin-left: 20px; }
+
+.language-wrapper img {
+    width: 30px;
+    vertical-align: top;
+    margin: 2px 0;
+    cursor: pointer;
+}
+
+.language-dropdown {
+    display: grid;
+    position: absolute;
+}
+
+.language-dropdown a { margin: 0; }
+
+.language-dropdown.hide { display: none; }
