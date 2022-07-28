@@ -126,8 +126,10 @@ var SilverScreen;
             this.questionHub.on("UserMuted", this.userMuted);
             this.questionHub.on("UserUnMuted", this.userUnMuted);
             this.questionHub.onreconnecting((error) => {
-                this.log(`Reconnecting to chat, error: ${error}`);
-                this.showError(SilverScreen.ErrorType.Warning, "Connection lost. Reconnecting...");
+                if (error != undefined) {
+                    this.log(`Reconnecting to chat, error: ${error}`);
+                    this.showError(SilverScreen.ErrorType.Warning, "Connection lost. Reconnecting...");
+                }
                 if (this.onReconnecting)
                     this.onReconnecting(error);
             });

@@ -64,8 +64,10 @@ var SilverScreen;
                 }
             });
             this.eventHub.onreconnecting((error) => {
-                this.log(`Reconnecting to event, error: ${error}`);
-                this.showError(SilverScreen.ErrorType.Warning, "Connection lost. Reconnecting...");
+                if (error != undefined) {
+                    this.log(`Reconnecting to event, error: ${error}`);
+                    this.showError(SilverScreen.ErrorType.Warning, "Connection lost. Reconnecting...");
+                }
                 if (this.onReconnecting)
                     this.onReconnecting(error);
             });
