@@ -14,6 +14,7 @@ $(function () {
     bindEventBrite();
     bindTag();
     bindS3Uploader();
+    bindLanguage();
     RollIframeStyle($("#iframe-tab input[name=IsIframe]").is(":checked"));
 
     $(".js-change-drm").on("change", function () {
@@ -132,6 +133,74 @@ function bindS3Uploader() {
                     alert(data.msg);
                     $this.val('');
                 }
+            }
+        });
+    })
+}
+
+function bindLanguage() {
+    $("#languages-wrapper ul li").click(function () {
+        $(this).toggleClass("selected");
+    });
+
+    $("#language-add").click(function (e) {
+        e.preventDefault();
+
+        $(".available-languages li").each(function (index) {
+            if ($(this).hasClass("selected")) {
+                $(this).removeClass("selected").removeClass("active");
+                $(".selected-languages li").eq(index).addClass("active");
+            }
+        })
+    });
+
+    $("#language-remove").click(function (e) {
+        e.preventDefault();
+
+        $(".selected-languages li").each(function (index) {
+            if ($(this).hasClass("selected")) {
+                $(this).removeClass("selected").removeClass("active");
+                $(".available-languages li").eq(index).addClass("active");
+            }
+        })
+    });
+
+    $(".save-languages").click(function (e) {
+        e.preventDefault();
+
+        var formData = new FormData();
+        var addedLanguages = "";
+        var removedLanguages = "";
+        $(".selected-languages li").each(function (index) {
+            if ($(this).hasClass("active") && !$(this).hasClass("current")) {
+                if (addedLanguages == "") {
+                    addedLanguages = $(this).text();
+                } else {
+                    addedLanguages = addedLanguages + "," + $(this).text();
+                }
+            } else if ($(this).hasClass("current") && !$(this).hasClass("active")) {
+                if (removedLanguages == "") {
+                    removedLanguages = $(this).text();
+                } else {
+                    removedLanguages = removedLanguages + "," + $(this).text();
+                }
+            }
+        })
+        formData.append("addedLanguages", addedLanguages);
+        formData.append("removedLanguages", removedLanguages);
+
+        $.ajax({
+            url: "/admin/project/" + projectId + "/languages/add",
+            data: formData,
+            type: "POST",
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                
+            },
+            success: function (data) {
+                console.log(data)
+                $("#languages-tab form").submit();
             }
         });
     })

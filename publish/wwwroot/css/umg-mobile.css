@@ -15,6 +15,10 @@
         justify-content: space-between;
     }
 
+    header .language-wrapper {
+        left: 33px;
+    }
+
     /* ---------GENERAL--------- */
 
     .spacer {
@@ -209,6 +213,10 @@
         justify-content: space-between;
     }
 
+    header .language-wrapper {
+        left: 25px;
+        top: -1px;
+    }
 
     .img#brand-logo {
         max-height: 50px;

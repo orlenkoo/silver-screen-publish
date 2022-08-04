@@ -17,3 +17,25 @@ table .tag-clip { font-size: 12px; }
 input.changed {
     background: #d4ecf3;
 }
+
+#languages-wrapper ul {
+    height: 380px;
+    overflow-y: scroll;
+    list-style: none;
+    padding: 0;
+    border: 2px solid grey;
+}
+#languages-wrapper ul li {
+    padding: 5px 15px;
+    display: none;
+}
+#languages-wrapper li.selected {
+    background: #2196f3;
+}
+#languages-wrapper li.active {
+    display: block;
+}
+
+.nav-link {
+    padding: 0.5rem 0.8rem;
+}

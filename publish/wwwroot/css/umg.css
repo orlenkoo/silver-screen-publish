@@ -375,6 +375,7 @@ header {
 
 header .button-wrapper {
     align-items: flex-start;
+    position: relative;
 }
 
 /*
@@ -1061,7 +1062,11 @@ input, select, textarea, .btn, .form-control {
     padding: 0;
 }
 
-.language-wrapper { margin-left: 20px; }
+.language-wrapper {
+    position: absolute;
+    top: 2px;
+    right: -45px;
+}
 
 .language-wrapper img {
     width: 30px;
