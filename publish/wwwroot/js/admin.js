@@ -105,6 +105,36 @@ function bindS3Uploader() {
     $(".input-img-preview").change(function () {
         $(this).next().find("img").attr("src", $(this).val());
     })
+
+    $(".input-file-s3-css").change(function () {
+        if ($(this)[0].files.length === 0) return;
+
+        var $this = $(this);
+
+        var formData = new FormData();
+        formData.append("file", $(this)[0].files[0]);
+        formData.append("projectId", projectId);
+
+        $.ajax({
+            url: "/admin/upload/s3/css",
+            data: formData,
+            type: "POST",
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                $this.prop("disabled", true);
+            },
+            success: function (data) {
+                $this.prop("disabled", false);
+                if (data.success) {
+                    $this.next().val(data.msg);
+                } else {
+                    alert(data.msg);
+                    $this.val('');
+                }
+            }
+        });
+    })
 }
 
 function bindTag() {

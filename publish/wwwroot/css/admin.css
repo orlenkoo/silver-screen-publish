@@ -6,7 +6,7 @@
 .tag-clip:hover { text-decoration: underline; }
 table .tag-clip { font-size: 12px; }
 
-.input-file-s3 {
+.input-file-s3, .input-file-s3-css {
     margin-left: 15px;
 }
 .preview-image img { 
