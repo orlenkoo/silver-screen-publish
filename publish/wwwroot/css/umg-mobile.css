@@ -16,7 +16,8 @@
     }
 
     header .language-wrapper {
-        left: 33px;
+        left: 0;
+        top: 30px;
     }
 
     /* ---------GENERAL--------- */
@@ -214,8 +215,8 @@
     }
 
     header .language-wrapper {
-        left: 25px;
-        top: -1px;
+        left: 0;
+        top: 25px;
     }
 
     .img#brand-logo {
