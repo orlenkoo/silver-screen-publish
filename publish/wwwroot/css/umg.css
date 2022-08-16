@@ -749,11 +749,13 @@ input, select, textarea, .btn, .form-control {
     overflow: hidden;
     overflow-y: auto;
     background: rgba(0, 0, 0, 0.5);
-    height: 500px;
+    height: calc((1080/1920 * 100vw) - 0.5px);
 }
 
+.col-12.question-area { border-left: none }
+
 .has-countdown .question-area {
-    display:none;
+    display: none;
 }
 
 .client-hosted-embed {
@@ -771,7 +773,7 @@ input, select, textarea, .btn, .form-control {
     scrollbar-color: var(--main-color) var(--umg-scrollbar-background);
     display: flex;
     flex-direction: column-reverse;
-    height: 424px;
+    height: calc((1080/1920 * 100vw) - 85px);
 }
 
 .message {
