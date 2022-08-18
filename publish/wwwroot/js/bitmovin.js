@@ -25,17 +25,27 @@ var SilverScreen;
                 return false;
         }
         initialize() {
-            var playerConfig = {
-                "key": this.PlayerKey,
-                "playback": {
-                    "autoplay": false
-                },
-                "analytics": {
-                    "key": "09E1151E-22F9-42E9-BABA-4A697367850F",
-                    "videoId": this.projectKey,
-                    "title": this.projectTitle
-                },
-            };
+            if (this.youboraDisabled == "true") {
+                var playerConfig = {
+                    "key": this.PlayerKey,
+                    "playback": {
+                        "autoplay": false
+                    },
+                    "analytics": {},
+                };
+            } else {
+                var playerConfig = {
+                    "key": this.PlayerKey,
+                    "playback": {
+                        "autoplay": false
+                    },
+                    "analytics": {
+                        "key": "09E1151E-22F9-42E9-BABA-4A697367850F",
+                        "videoId": this.projectKey,
+                        "title": this.projectTitle
+                    },
+                };
+            }
             this.player = new bitmovin.player.Player(this.element, playerConfig);
             this.player.on("playing", () => {
                 $(".video-js").addClass("vjs-has-started");
