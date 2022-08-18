@@ -16,6 +16,7 @@ var SilverScreen;
             this.DASHStreamUrl = $("#DASHStreamUrl").val();
             this.element = document.querySelector(".theoplayer-container");
             this.PlayerKey = $("#PlayerKey").val();
+            this.youboraDisabled = $("#youboraDisabled").val();
         }
         get isPlaying() {
             if (this.player && this.player.isPlaying())
@@ -24,6 +25,17 @@ var SilverScreen;
                 return false;
         }
         initialize() {
+            var playerConfig = {
+                "key": this.PlayerKey,
+                "playback": {
+                    "autoplay": false
+                },
+                "analytics": {
+                    "key": "09E1151E-22F9-42E9-BABA-4A697367850F",
+                    "videoId": this.projectKey,
+                    "title": this.projectTitle
+                },
+            };
             this.player = new bitmovin.player.Player(this.element, playerConfig);
             this.player.on("playing", () => {
                 $(".video-js").addClass("vjs-has-started");
