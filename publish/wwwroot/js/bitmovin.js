@@ -59,9 +59,6 @@ var SilverScreen;
             let sourceConfig = {
                 "hls": this.watchUrl,
                 "poster": this.backgroundPoster,
-                "options": {
-                    "withCredentials": true
-                }
             };
             if (this.DRMEnabled) {
                 sourceConfig.dash = this.DASHStreamUrl;
