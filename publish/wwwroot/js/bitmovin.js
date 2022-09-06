@@ -32,6 +32,7 @@ var SilverScreen;
                         "autoplay": false
                     },
                     "analytics": {},
+                    ui: false,
                 };
             } else {
                 var playerConfig = {
@@ -44,6 +45,7 @@ var SilverScreen;
                         "videoId": this.projectKey,
                         "title": this.projectTitle
                     },
+                    ui: false,
                 };
             }
             this.player = new bitmovin.player.Player(this.element, playerConfig);
