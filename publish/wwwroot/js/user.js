@@ -103,12 +103,8 @@ function prepareChat() {
     else if (nickNameMode == SilverScreen.NickNameMode.HiddenNick) 
     {
         if (chatMode == SilverScreen.ChatMode.PrivateChat) {
-            //only need to join the chat hub if we've asked a question
-            $(".js-ask-click").on("click", function (e) {
-                e.preventDefault();
-
-                joinChatHiddenNickname(true);
-            });
+            console.log('ask nickname')
+            joinChatHiddenNickname(true);
         } else {
             joinChatHiddenNickname(false);
         }
