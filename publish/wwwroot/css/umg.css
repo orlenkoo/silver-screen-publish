@@ -1085,3 +1085,7 @@ input, select, textarea, .btn, .form-control {
 .language-dropdown a { margin: 0; }
 
 .language-dropdown.hide { display: none; }
+
+.bmpui-ui-settings-panel-item.bmpui-subtitle-customization-settings-panel-item.bmpui-last {
+    display: none;
+}
