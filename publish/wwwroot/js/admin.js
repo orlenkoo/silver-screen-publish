@@ -72,6 +72,10 @@ $(function () {
         $(this).parent().parent().find("a").attr("href", url);
     })
 
+    $("#PlayerControlsColor").spectrum({
+        type: "component"
+    })
+
 });
 
 function bindS3Uploader() {
