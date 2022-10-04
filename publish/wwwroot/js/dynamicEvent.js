@@ -22,7 +22,24 @@ var SilverScreen;
                     .catch(this.onHubError);
             };
             this.sendHeartBeat = (userKey, cookieId) => {
-                this.eventHub.invoke("SendHeartBeat", this.projectKey, userKey, cookieId);
+                console.log('try to send heartbeat', userKey);
+
+                const date = new Date();
+
+                if (sessionStorage.getItem('lastSendTime')) {
+                    const lastSendTime = new Date(sessionStorage.getItem('lastSendTime'));
+                    const diffTime = Math.abs(date - lastSendTime);
+                    //
+                    if (diffTime >= 60000) {
+                        this.eventHub.invoke("SendHeartBeat", this.projectKey, userKey, cookieId);
+                        sessionStorage.setItem('lastSendTime', date);
+                    } else {
+                        console.log('ignored sending heartbeat');
+                    }
+                } else {
+                    sessionStorage.setItem('lastSendTime', date);
+                }
+                
             };
             this.onHubError = (err) => {
                 console.log(err);
