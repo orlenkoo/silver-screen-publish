@@ -80,6 +80,8 @@ var SilverScreen;
                             var protocol = uriParts[0].slice(-3);
                             uriParts = uri.split(';', 2);
                             contentId = uriParts.length > 1 ? uriParts[1] : '';
+                            uriParts = contentId.split('?', 2);
+                            contentId = uriParts.length > 1 ? uriParts[0] : contentId;
                             return protocol.toLowerCase() == 'skd' ? contentId : '';
                         },
                         prepareLicenseAsync: function (ckc) {
@@ -95,17 +97,29 @@ var SilverScreen;
                                 reader.readAsArrayBuffer(ckc);
                             });
                         },
+                        prepareLicenseAsync: function (ckc) {
+                            return new Promise(function (resolve, reject) {
+                                var reader = new FileReader();
+                                reader.addEventListener('loadend', function () {
+                                    resolve(new Uint8Array(reader.result));
+                                });
+                                reader.addEventListener('error', function () {
+                                    reject(reader.error);
+                                });
+                                reader.readAsArrayBuffer(ckc);
+                            });
+                        },
                         prepareMessage: function (event, session) {
                             return new Blob([event.message], { type: 'application/octet-binary' });
                         },
-                        headers: [{
-                                name: 'content-type',
-                                value: 'application/octet-stream'
-                            }],
+                        headers: {
+                            'content-type': 'application/octet-stream'
+                        },
                         useUint16InitData: true,
                         licenseResponseType: 'blob'
                     }
                 };
+                //console.log('drm enabled', sourceConfig);
             }
             this.player.load(sourceConfig);
         }
