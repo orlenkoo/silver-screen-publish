@@ -1,36 +1,90 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF‐8" />
-    <title>THEOplayer 2.X: Getting Started</title>
-    <meta name="viewport" content="width=device‐width, initial‐scale=1.0" />
-    <script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
-    <script type="text/javascript" src="https://cdn.myth.theoplayer.com/ace1f596-e2d4-4b2e-8b94-abf9e706ca7d/THEOplayer.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.myth.theoplayer.com/ace1f596-e2d4-4b2e-8b94-abf9e706ca7d/ui.css" />
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="https://cdn.bitmovin.com/player/web/8/bitmovinplayer.js"></script>
 </head>
 <body>
-    <div class="theoplayer‐container video‐js theoplayer‐skin vjs‐fluid"></div>
-    <script>
-        var element = document.querySelector(".theoplayer‐container");
-        var player = new THEOplayer.Player(element, {
-            libraryLocation: "https://cdn.myth.theoplayer.com/ace1f596-e2d4-4b2e-8b94-abf9e706ca7d",
-            license: "sZP7IYe6T6P6TSx63Kar36k10lg1FSxe3oa-CK0_CZzZIQBkCKazClerTQ06FOPlUY3zWokgbgjNIOf9fl0kIlbtIKP1FSgeISC-3Qfr3mz_0LP6FS4eIlIKIKai0uBc0mfVfK4_bQgZCYxNWoryIQXzImf90SCZ3u0k3l5i0u5i0Oi6Io4pIYP1UQgqWgjeCYxgflEc3lBr0uR_TuRL3LRLFOPeWok1dDrLYtA1Ioh6TgV6UQ1gWtAVCYggb6rlWoz6FOPVWo31WQ1qbta6FOfJf6i6bogVUK4ZFY3lbK4gW6reImPUFOPeWok1dDrLYt3qUYPlImf9DZPzdQ4qbQc1sD4ZFK3qWmfVfKcqCoXVdQjLUOfVf6E6FOPLdDcoIYf-bo3ZID4pFKxgfgzVfG3edt06TgV6dwx-Wuh6Ymi6bo4pIXjNWYAZIY3LdDjpflNzbG4gya"
-        });
-        // OPTIONAL CONFIGURATION
-        // Customized video player parameters
-        player.source = {
-            sources: [{
-                "src": "https://ingest10.cmcst.de/drmtest/ngrp:stream_drmtest/playlist.m3u8",
-                "type": "application/x-mpegurl",
-                "contentProtection": {
-                    "integration": "ezdrm",
-                    "fairplay": {
-                        "licenseAcquisitionURL": "https://fps.ezdrm.com/api/licenses/Asset-ID",
-                        "certificateURL": "https://cc-drm.s3.eu-west-2.amazonaws.com/fairplay.cer"
-                    }
+    <div id="my-player"></div>
+    <script type="text/javascript">
+        const container = document.getElementById('my-player');
+        const playerConfig = {
+            key: '193d5c94-3e1c-45c4-9ef3-ea626191fee5'
+        };
+        const source = {
+            dash: 'https://ingest23.cmcst.de/drm_fastly/drmmatt/manifest.mpd',
+            hls: 'https://ingest23.cmcst.de/drm_fastly/drmmatt/playlist.m3u8',
+            drm: {
+                widevine: {
+                    LA_URL: 'https://widevine-dash.ezdrm.com/widevine-php/widevine-foreignkey.php?pX=76D593'
+
+                },
+                playready: {
+                    LA_URL: 'https://playready.ezdrm.com/cency/preauth.aspx?pX=5A4BFA'
+                },
+                fairplay: {
+                    LA_URL: 'https://fps.ezdrm.com/api/licenses/c496ca2f-6388-4b00-8d57-faa5a855faff',
+                    certificateURL: 'https://cc-drm.s3.eu-west-2.amazonaws.com/fairplay.cer',
+                    prepareContentId: function (contentId) {
+                        var uri = contentId;
+                        var uriParts = uri.split('://', 1);
+                        var protocol = uriParts[0].slice(-3);
+                        uriParts = uri.split(';', 2);
+                        contentId = uriParts.length > 1 ? uriParts[1] : '';
+                        uriParts = contentId.split('?', 2);
+                        contentId = uriParts.length > 1 ? uriParts[0] : contentId;
+                        return protocol.toLowerCase() == 'skd' ? contentId : '';
+                    },
+                    prepareLicenseAsync: function (ckc) {
+                        return new Promise(function (resolve, reject) {
+                            var reader = new FileReader();
+                            reader.addEventListener('loadend', function () {
+                                var array = new Uint8Array(reader.result);
+                                resolve(array);
+                            });
+                            reader.addEventListener('error', function () {
+                                reject(reader.error);
+                            });
+                            reader.readAsArrayBuffer(ckc);
+                        });
+                    },
+                    prepareLicenseAsync: function (ckc) {
+                        return new Promise(function (resolve, reject) {
+                            var reader = new FileReader();
+                            reader.addEventListener('loadend', function () {
+                                resolve(new Uint8Array(reader.result));
+                            });
+                            reader.addEventListener('error', function () {
+                                reject(reader.error);
+                            });
+                            reader.readAsArrayBuffer(ckc);
+                        });
+                    },
+                    prepareMessage: function (event, session) {
+                        return new Blob([event.message], { type: 'application/octet-binary' });
+                    },
+                    headers: {
+                        'content-type': 'application/octet-stream'
+                    },
+                    useUint16InitData: true,
+                    licenseResponseType: 'blob'
                 }
-            }]
-        }
+            }
+        };
+
+        const player = new bitmovin.player.Player(container, playerConfig);
+
+        player.load(source).then(
+            player => {
+                console.log('Successfully created Bitmovin Player instance')
+            },
+            reason => {
+                console.log('Error while creating Bitmovin Player instance')
+            }
+        );
+
     </script>
-    </body>
+</body>
 </html>
+
