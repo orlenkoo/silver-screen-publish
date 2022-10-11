@@ -48,6 +48,7 @@ var SilverScreen;
                     ui: false,
                 };
             }
+            playerConfig.logs = { level: "debug" };
             this.player = new bitmovin.player.Player(this.element, playerConfig);
             this.uiManager = new bitmovin.playerui.UIManager(this.player, this.createUIContainer());
 
@@ -119,7 +120,7 @@ var SilverScreen;
                         licenseResponseType: 'blob'
                     }
                 };
-                //console.log('drm enabled', sourceConfig);
+                console.log('drm enabled', sourceConfig);
             }
             this.player.load(sourceConfig);
         }
