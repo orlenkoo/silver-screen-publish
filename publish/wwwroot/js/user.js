@@ -9,6 +9,7 @@ var clientHosted;
 var heartBeatInterval;
 var hbInterval;
 var viewCookieKey;
+var interval = 0;
 
 $(function () {
     userKey = $("#userKey").val();
@@ -311,11 +312,12 @@ function startHub(triggerSend) {
 
 function startCountdown() {
     var countDown = $("#countDown").val();
+    if (interval != 0) clearInterval(interval);
     if (!countDown)
         return;
 
     var date = new Date(countDown).getTime();
-    var interval = setInterval(function () {
+    interval = setInterval(function () {
         var now = new Date().getTime();
         var t = date - now;
         if (t < 0) {
