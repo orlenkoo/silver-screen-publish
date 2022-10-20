@@ -31,8 +31,7 @@ var SilverScreen;
                     "playback": {
                         "autoplay": false
                     },
-                    "analytics": {},
-                    ui: false,
+                    "analytics": {}
                 };
             } else {
                 var playerConfig = {
@@ -44,13 +43,11 @@ var SilverScreen;
                         "key": "09E1151E-22F9-42E9-BABA-4A697367850F",
                         "videoId": this.projectKey,
                         "title": this.projectTitle
-                    },
-                    ui: false,
+                    }
                 };
             }
             playerConfig.logs = { level: "debug" };
             this.player = new bitmovin.player.Player(this.element, playerConfig);
-            this.uiManager = new bitmovin.playerui.UIManager(this.player, this.createUIContainer());
 
             this.player.on("playing", () => {
                 $(".video-js").addClass("vjs-has-started");
@@ -146,122 +143,6 @@ var SilverScreen;
             if (navigator.userAgent.includes("Mac") && "ontouchend" in document)
                 return true;
             return false;
-        }
-        createUIContainer() {
-            let subtitleOverlay = new bitmovin.playerui.SubtitleOverlay();
-
-            let settingsPanel = new bitmovin.playerui.SettingsPanel({
-                components: [
-                    new bitmovin.playerui.SettingsPanelPage({
-                        components: [
-                            new bitmovin.playerui.SettingsPanelItem('Video Quality', new bitmovin.playerui.VideoQualitySelectBox()),
-                            new bitmovin.playerui.SettingsPanelItem('Speed', new bitmovin.playerui.PlaybackSpeedSelectBox()),
-                            new bitmovin.playerui.SettingsPanelItem('Audio Quality', new bitmovin.playerui.AudioQualitySelectBox()),
-                        ],
-                    }),
-                ],
-                hidden: true,
-            });
-
-            let subtitleListBox = new bitmovin.playerui.SubtitleListBox();
-
-            let subtitleListBoxSettingsPanelPage = new bitmovin.playerui.SettingsPanelPage({
-                components: [
-                    new bitmovin.playerui.SettingsPanelItem(null, subtitleListBox),
-                ],
-            });
-
-            let subtitleSettingsPanel = new bitmovin.playerui.SettingsPanel({
-                components: [
-                    subtitleListBoxSettingsPanelPage,
-                ],
-                hidden: true,
-                pageTransitionAnimation: false,
-            });
-
-            let subtitleSettingsPanelPage = new bitmovin.playerui.SubtitleSettingsPanelPage({
-                settingsPanel: subtitleSettingsPanel,
-                overlay: subtitleOverlay,
-            });
-
-            let subtitleSettingsOpenButton = new bitmovin.playerui.SettingsPanelPageOpenButton({
-                targetPage: subtitleSettingsPanelPage,
-                container: subtitleSettingsPanel,
-                text: 'Settings',
-                cssClasses: ['customization-open-button']
-            });
-
-            subtitleListBoxSettingsPanelPage.addComponent(
-                new bitmovin.playerui.SettingsPanelItem(null, subtitleSettingsOpenButton, {
-                    cssClasses: ['subtitle-customization-settings-panel-item']
-                })
-            );
-            subtitleSettingsPanel.addComponent(subtitleSettingsPanelPage);
-
-            let audioTrackListBox = new bitmovin.playerui.AudioTrackListBox();
-            let audioTrackSettingsPanel = new bitmovin.playerui.SettingsPanel({
-                components: [
-                    new bitmovin.playerui.SettingsPanelPage({
-                        components: [
-                            new bitmovin.playerui.SettingsPanelItem(null, audioTrackListBox),
-                        ],
-                    }),
-                ],
-                hidden: true,
-            });
-
-            let controlBar = new bitmovin.playerui.ControlBar({
-                components: [
-                    audioTrackSettingsPanel,
-                    subtitleSettingsPanel,
-                    settingsPanel,
-                    new bitmovin.playerui.Container({
-                        components: [
-                            new bitmovin.playerui.PlaybackTimeLabel({ timeLabelMode: bitmovin.playerui.PlaybackTimeLabelMode.CurrentTime, hideInLivePlayback: true }),
-                            new bitmovin.playerui.SeekBar({ label: new bitmovin.playerui.SeekBarLabel() }),
-                            new bitmovin.playerui.PlaybackTimeLabel({ timeLabelMode: bitmovin.playerui.PlaybackTimeLabelMode.TotalTime, cssClasses: ['text-right'] }),
-                        ],
-                        cssClasses: ['controlbar-top'],
-                    }),
-                    new bitmovin.playerui.Container({
-                        components: [
-                            new bitmovin.playerui.PlaybackToggleButton(),
-                            new bitmovin.playerui.VolumeToggleButton(),
-                            new bitmovin.playerui.VolumeSlider(),
-                            new bitmovin.playerui.Spacer(),
-                            new bitmovin.playerui.PictureInPictureToggleButton(),
-                            new bitmovin.playerui.AirPlayToggleButton(),
-                            new bitmovin.playerui.CastToggleButton(),
-                            new bitmovin.playerui.VRToggleButton(),
-                            new bitmovin.playerui.SettingsToggleButton({
-                                settingsPanel: audioTrackSettingsPanel,
-                                cssClass: 'ui-audiotracksettingstogglebutton',
-                            }),
-                            new bitmovin.playerui.SettingsToggleButton({
-                                settingsPanel: subtitleSettingsPanel,
-                                cssClass: 'ui-subtitlesettingstogglebutton',
-                            }),
-                            new bitmovin.playerui.SettingsToggleButton({ settingsPanel: settingsPanel }),
-                            new bitmovin.playerui.FullscreenToggleButton(),
-                        ],
-                        cssClasses: ['controlbar-bottom'],
-                    }),
-                ],
-            });
-
-            return new bitmovin.playerui.UIContainer({
-                components: [
-                    subtitleOverlay,
-                    new bitmovin.playerui.BufferingOverlay(),
-                    new bitmovin.playerui.PlaybackToggleOverlay(),
-                    new bitmovin.playerui.CastStatusOverlay(),
-                    controlBar,
-                    new bitmovin.playerui.TitleBar(),
-                    new bitmovin.playerui.RecommendationOverlay(),
-                    new bitmovin.playerui.Watermark(),
-                    new bitmovin.playerui.ErrorMessageOverlay(),
-                ],
-            });
         }
     }
     SilverScreen.BitmovinPlayer = BitmovinPlayer;
