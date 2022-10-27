@@ -39,13 +39,12 @@ body:not(.full-width) .page-wrapper {
     max-width: 1440px;
 }
 
-header, main, footer {
+header, footer {
     display: flex;
     justify-content: space-between;
 }
 
 main {
-    flex-direction: column;
 }
 
 button, a.button, div.button {
