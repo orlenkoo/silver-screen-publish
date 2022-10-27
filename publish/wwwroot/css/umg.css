@@ -390,7 +390,6 @@ header .material-icons, header .material-icons-outlined {
 .video-wrapper {
     width: 100%;
     height: 56.25%;
-    flex-wrap: wrap;
 }
 
 .poster-wrapper,
@@ -628,7 +627,6 @@ a:hover .logo {
 
 
 .theoplayer-container {
-    flex: 7 1 0;
 }
 
 .theoplayer-skin .vjs-big-play-button:hover {
@@ -742,7 +740,6 @@ input, select, textarea, .btn, .form-control {
 }
 
 .video-wrapper-inner {
-    flex: 0 0 100%;
 }
 
 .question-area {
