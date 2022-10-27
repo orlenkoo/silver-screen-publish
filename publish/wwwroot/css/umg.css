@@ -1089,3 +1089,10 @@ input, select, textarea, .btn, .form-control {
 .bmpui-ui-settings-panel-item.bmpui-subtitle-customization-settings-panel-item.bmpui-last {
     display: none;
 }
+
+.bmpui-ui-subtitle-overlay {
+    background: black;
+    opacity: 0.8;
+}
+
+.bmpui-ui-subtitle-label { color: white; }
