@@ -1095,12 +1095,11 @@ input, select, textarea, .btn, .form-control {
     display: none;
 }
 
-.bmpui-ui-subtitle-overlay {
+.bmpui-ui-uicontainer .bmpui-ui-subtitle-overlay .bmpui-ui-subtitle-label {
     background: black;
     opacity: 0.8;
+    color: white;
 }
-
-.bmpui-ui-subtitle-label { color: white; }
 
 @media (min-width: 992px) {
     .has-countdown .video-wrapper-inner {
