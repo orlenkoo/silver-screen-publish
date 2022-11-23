@@ -7,6 +7,8 @@ $(function () {
 
     $('#datetimepicker').datetimepicker({ sideBySide: true, allowInputToggle: true, format: "DD MMM yyyy HH:mm" });
 
+    //$('.trumbowyg').trumbowyg();
+
     bindContentAdd();
     bindQRSizes();
     bindMetrics();

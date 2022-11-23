@@ -22,24 +22,7 @@ var SilverScreen;
                     .catch(this.onHubError);
             };
             this.sendHeartBeat = (userKey, cookieId) => {
-                console.log('try to send heartbeat', userKey);
-
-                const date = new Date();
-
-                if (sessionStorage.getItem('lastSendTime')) {
-                    const lastSendTime = new Date(sessionStorage.getItem('lastSendTime'));
-                    const diffTime = Math.abs(date - lastSendTime);
-                    //
-                    if (diffTime >= 60000) {
-                        this.eventHub.invoke("SendHeartBeat", this.projectKey, userKey, cookieId);
-                        sessionStorage.setItem('lastSendTime', date);
-                    } else {
-                        console.log('ignored sending heartbeat');
-                    }
-                } else {
-                    sessionStorage.setItem('lastSendTime', date);
-                }
-                
+                this.eventHub.invoke("SendHeartBeat", this.projectKey, userKey, cookieId);
             };
             this.onHubError = (err) => {
                 console.log(err);
@@ -81,10 +64,8 @@ var SilverScreen;
                 }
             });
             this.eventHub.onreconnecting((error) => {
-                if (error != undefined) {
-                    this.log(`Reconnecting to event, error: ${error}`);
-                    this.showError(SilverScreen.ErrorType.Warning, "Connection lost. Reconnecting...");
-                }
+                this.log(`Reconnecting to event, error: ${error}`);
+                this.showError(SilverScreen.ErrorType.Warning, "Connection lost. Reconnecting...");
                 if (this.onReconnecting)
                     this.onReconnecting(error);
             });

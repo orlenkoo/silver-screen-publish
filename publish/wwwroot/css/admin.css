@@ -39,3 +39,7 @@ input.changed {
 .nav-link {
     padding: 0.5rem 0.8rem;
 }
+
+.trumbowyg-box, .trumbowyg-editor {
+    min-height: 150px;
+}
