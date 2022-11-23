@@ -16,6 +16,7 @@ var SilverScreen;
             this.DASHStreamUrl = $("#DASHStreamUrl").val();
             this.element = document.querySelector(".theoplayer-container");
             this.PlayerKey = $("#PlayerKey").val();
+            this.youboraDisabled = $("#youboraDisabled").val();
         }
         get isPlaying() {
             if (this.player && this.player.isPlaying())
@@ -24,18 +25,33 @@ var SilverScreen;
                 return false;
         }
         initialize() {
-            var playerConfig = {
-                "key": this.PlayerKey,
-                "playback": {
-                    "autoplay": false
-                },
-                "analytics": {
-                    "key": "09E1151E-22F9-42E9-BABA-4A697367850F",
-                    "videoId": this.projectKey,
-                    "title": this.projectTitle
-                },
-            };
+            if (this.youboraDisabled == "true") {
+                var playerConfig = {
+                    "key": this.PlayerKey,
+                    "playback": {
+                        "autoplay": false
+                    },
+                    "analytics": {},
+                    ui: false,
+                };
+            } else {
+                var playerConfig = {
+                    "key": this.PlayerKey,
+                    "playback": {
+                        "autoplay": false
+                    },
+                    "analytics": {
+                        "key": "09E1151E-22F9-42E9-BABA-4A697367850F",
+                        "videoId": this.projectKey,
+                        "title": this.projectTitle
+                    },
+                    ui: false,
+                };
+            }
+            playerConfig.logs = { level: "debug" };
             this.player = new bitmovin.player.Player(this.element, playerConfig);
+            this.uiManager = new bitmovin.playerui.UIManager(this.player, this.createUIContainer());
+
             this.player.on("playing", () => {
                 $(".video-js").addClass("vjs-has-started");
                 $(".video-js").removeClass("vjs-paused");
@@ -45,7 +61,7 @@ var SilverScreen;
             });
             let sourceConfig = {
                 "hls": this.watchUrl,
-                "poster": this.backgroundPoster
+                "poster": this.backgroundPoster,
             };
             if (this.DRMEnabled) {
                 sourceConfig.dash = this.DASHStreamUrl;
@@ -65,6 +81,8 @@ var SilverScreen;
                             var protocol = uriParts[0].slice(-3);
                             uriParts = uri.split(';', 2);
                             contentId = uriParts.length > 1 ? uriParts[1] : '';
+                            uriParts = contentId.split('?', 2);
+                            contentId = uriParts.length > 1 ? uriParts[0] : contentId;
                             return protocol.toLowerCase() == 'skd' ? contentId : '';
                         },
                         prepareLicenseAsync: function (ckc) {
@@ -80,17 +98,29 @@ var SilverScreen;
                                 reader.readAsArrayBuffer(ckc);
                             });
                         },
+                        prepareLicenseAsync: function (ckc) {
+                            return new Promise(function (resolve, reject) {
+                                var reader = new FileReader();
+                                reader.addEventListener('loadend', function () {
+                                    resolve(new Uint8Array(reader.result));
+                                });
+                                reader.addEventListener('error', function () {
+                                    reject(reader.error);
+                                });
+                                reader.readAsArrayBuffer(ckc);
+                            });
+                        },
                         prepareMessage: function (event, session) {
                             return new Blob([event.message], { type: 'application/octet-binary' });
                         },
-                        headers: [{
-                                name: 'content-type',
-                                value: 'application/octet-stream'
-                            }],
+                        headers: {
+                            'content-type': 'application/octet-stream'
+                        },
                         useUint16InitData: true,
                         licenseResponseType: 'blob'
                     }
                 };
+                console.log('drm enabled', sourceConfig);
             }
             this.player.load(sourceConfig);
         }
@@ -119,6 +149,7 @@ var SilverScreen;
         }
         createUIContainer() {
             let subtitleOverlay = new bitmovin.playerui.SubtitleOverlay();
+
             let settingsPanel = new bitmovin.playerui.SettingsPanel({
                 components: [
                     new bitmovin.playerui.SettingsPanelPage({
@@ -131,12 +162,15 @@ var SilverScreen;
                 ],
                 hidden: true,
             });
+
             let subtitleListBox = new bitmovin.playerui.SubtitleListBox();
+
             let subtitleListBoxSettingsPanelPage = new bitmovin.playerui.SettingsPanelPage({
                 components: [
                     new bitmovin.playerui.SettingsPanelItem(null, subtitleListBox),
                 ],
             });
+
             let subtitleSettingsPanel = new bitmovin.playerui.SettingsPanel({
                 components: [
                     subtitleListBoxSettingsPanelPage,
@@ -144,20 +178,26 @@ var SilverScreen;
                 hidden: true,
                 pageTransitionAnimation: false,
             });
+
             let subtitleSettingsPanelPage = new bitmovin.playerui.SubtitleSettingsPanelPage({
                 settingsPanel: subtitleSettingsPanel,
                 overlay: subtitleOverlay,
             });
+
             let subtitleSettingsOpenButton = new bitmovin.playerui.SettingsPanelPageOpenButton({
                 targetPage: subtitleSettingsPanelPage,
                 container: subtitleSettingsPanel,
                 text: 'Settings',
                 cssClasses: ['customization-open-button']
             });
-            subtitleListBoxSettingsPanelPage.addComponent(new bitmovin.playerui.SettingsPanelItem(null, subtitleSettingsOpenButton, {
-                cssClasses: ['subtitle-customization-settings-panel-item']
-            }));
+
+            subtitleListBoxSettingsPanelPage.addComponent(
+                new bitmovin.playerui.SettingsPanelItem(null, subtitleSettingsOpenButton, {
+                    cssClasses: ['subtitle-customization-settings-panel-item']
+                })
+            );
             subtitleSettingsPanel.addComponent(subtitleSettingsPanelPage);
+
             let audioTrackListBox = new bitmovin.playerui.AudioTrackListBox();
             let audioTrackSettingsPanel = new bitmovin.playerui.SettingsPanel({
                 components: [
@@ -169,6 +209,7 @@ var SilverScreen;
                 ],
                 hidden: true,
             });
+
             let controlBar = new bitmovin.playerui.ControlBar({
                 components: [
                     audioTrackSettingsPanel,
@@ -207,6 +248,7 @@ var SilverScreen;
                     }),
                 ],
             });
+
             return new bitmovin.playerui.UIContainer({
                 components: [
                     subtitleOverlay,
