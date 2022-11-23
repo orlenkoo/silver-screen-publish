@@ -34,8 +34,9 @@ var SilverScreen;
                     "analytics": {},
                     ui: false,
                 };
-            } else {
-                var playerConfig = {
+            }
+            else {
+                playerConfig = {
                     "key": this.PlayerKey,
                     "playback": {
                         "autoplay": false
@@ -48,10 +49,8 @@ var SilverScreen;
                     ui: false,
                 };
             }
-            playerConfig.logs = { level: "debug" };
             this.player = new bitmovin.player.Player(this.element, playerConfig);
             this.uiManager = new bitmovin.playerui.UIManager(this.player, this.createUIContainer());
-
             this.player.on("playing", () => {
                 $(".video-js").addClass("vjs-has-started");
                 $(".video-js").removeClass("vjs-paused");
@@ -61,7 +60,7 @@ var SilverScreen;
             });
             let sourceConfig = {
                 "hls": this.watchUrl,
-                "poster": this.backgroundPoster,
+                "poster": this.backgroundPoster
             };
             if (this.DRMEnabled) {
                 sourceConfig.dash = this.DASHStreamUrl;
@@ -91,18 +90,6 @@ var SilverScreen;
                                 reader.addEventListener('loadend', function () {
                                     var array = new Uint8Array(reader.result);
                                     resolve(array);
-                                });
-                                reader.addEventListener('error', function () {
-                                    reject(reader.error);
-                                });
-                                reader.readAsArrayBuffer(ckc);
-                            });
-                        },
-                        prepareLicenseAsync: function (ckc) {
-                            return new Promise(function (resolve, reject) {
-                                var reader = new FileReader();
-                                reader.addEventListener('loadend', function () {
-                                    resolve(new Uint8Array(reader.result));
                                 });
                                 reader.addEventListener('error', function () {
                                     reject(reader.error);
@@ -149,7 +136,6 @@ var SilverScreen;
         }
         createUIContainer() {
             let subtitleOverlay = new bitmovin.playerui.SubtitleOverlay();
-
             let settingsPanel = new bitmovin.playerui.SettingsPanel({
                 components: [
                     new bitmovin.playerui.SettingsPanelPage({
@@ -162,15 +148,12 @@ var SilverScreen;
                 ],
                 hidden: true,
             });
-
             let subtitleListBox = new bitmovin.playerui.SubtitleListBox();
-
             let subtitleListBoxSettingsPanelPage = new bitmovin.playerui.SettingsPanelPage({
                 components: [
                     new bitmovin.playerui.SettingsPanelItem(null, subtitleListBox),
                 ],
             });
-
             let subtitleSettingsPanel = new bitmovin.playerui.SettingsPanel({
                 components: [
                     subtitleListBoxSettingsPanelPage,
@@ -178,26 +161,20 @@ var SilverScreen;
                 hidden: true,
                 pageTransitionAnimation: false,
             });
-
             let subtitleSettingsPanelPage = new bitmovin.playerui.SubtitleSettingsPanelPage({
                 settingsPanel: subtitleSettingsPanel,
                 overlay: subtitleOverlay,
             });
-
             let subtitleSettingsOpenButton = new bitmovin.playerui.SettingsPanelPageOpenButton({
                 targetPage: subtitleSettingsPanelPage,
                 container: subtitleSettingsPanel,
                 text: 'Settings',
                 cssClasses: ['customization-open-button']
             });
-
-            subtitleListBoxSettingsPanelPage.addComponent(
-                new bitmovin.playerui.SettingsPanelItem(null, subtitleSettingsOpenButton, {
-                    cssClasses: ['subtitle-customization-settings-panel-item']
-                })
-            );
+            subtitleListBoxSettingsPanelPage.addComponent(new bitmovin.playerui.SettingsPanelItem(null, subtitleSettingsOpenButton, {
+                cssClasses: ['subtitle-customization-settings-panel-item']
+            }));
             subtitleSettingsPanel.addComponent(subtitleSettingsPanelPage);
-
             let audioTrackListBox = new bitmovin.playerui.AudioTrackListBox();
             let audioTrackSettingsPanel = new bitmovin.playerui.SettingsPanel({
                 components: [
@@ -209,7 +186,6 @@ var SilverScreen;
                 ],
                 hidden: true,
             });
-
             let controlBar = new bitmovin.playerui.ControlBar({
                 components: [
                     audioTrackSettingsPanel,
@@ -248,7 +224,6 @@ var SilverScreen;
                     }),
                 ],
             });
-
             return new bitmovin.playerui.UIContainer({
                 components: [
                     subtitleOverlay,
