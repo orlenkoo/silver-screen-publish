@@ -7,7 +7,7 @@ $(function () {
 
     $('#datetimepicker').datetimepicker({ sideBySide: true, allowInputToggle: true, format: "DD MMM yyyy HH:mm" });
 
-    //$('.trumbowyg').trumbowyg();
+    $('.trumbowyg').trumbowyg();
 
     bindContentAdd();
     bindQRSizes();
@@ -74,7 +74,7 @@ $(function () {
         $(this).parent().parent().find("a").attr("href", url);
     })
 
-    $("#PlayerControlsColor").spectrum({
+    $(".spectrum").spectrum({
         type: "component"
     })
 
