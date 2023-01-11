@@ -21,7 +21,7 @@ var SilverScreen;
         initialize() {
             this.player = new THEOplayer.Player(this.element, {
                 libraryLocation: "https://cdn.myth.theoplayer.com/" + this.PlayerKey,
-                license: "sZP7IYe6T6Pg3KBoIleoTOke3D0_FSai3SB-CS3l0OkK0LAe0L313K0t3Da6FOPlUY3zWokgbgjNIOf9flCz3lfzIuI6FSgg0l0-3uRcTOz_IuBiFS5rCKxKCSeL3DCt3mfVfK4_bQgZCYxNWoryIQXzImf90SCt0Sb_TSCi0u5i0Oi6Io4pIYP1UQgqWgjeCYxgflEc3lCrTS5k3lCz3u0kFOPeWok1dDrLYtA1Ioh6TgV6CKgzWDjodD_-Co3zIY3zFG0LFK4kFD3gWGxZCDi-0mr1WDX9Wor1Ut0pCoj-f6i6CoX-CoXLUOreImfVfK3-Ct3zFKxgf6i6It4gbtxVdY3zFKcNUKh6FOPVWo31WQ1qbta6FOPVU6reWo37CDXLFKrVf6i6WYCpIQk7FKxgf6i6bogVUK4ZFY3lbK4gW6reImfVfGxEIDjiWQXrIYfpCoj-fgzVfKxqWDXNWG3ybojkbK3gflNWf6E6FOPVWo31WQ1qbta6FOPzdQ4qbQc1sD4ZFK3qWmPUFOPLIQ-LflNWfK1zWDikfgzVfG3gWKxydDkibK4LbogqW6f9UwPkIYz"
+                license: "sZP7IYe6T6P6TSx63Kar36k10lg1FSxe3oa-CK0_CZzZIQBkCKazClerTQ06FOPlUY3zWokgbgjNIOf9fl0kIlbtIKP1FSgeISC-3Qfr3mz_0LP6FS4eIlIKIKai0uBc0mfVfK4_bQgZCYxNWoryIQXzImf90SCZ3u0k3l5i0u5i0Oi6Io4pIYP1UQgqWgjeCYxgflEc3lBr0uR_TuRL3LRLFOPeWok1dDrLYtA1Ioh6TgV6UQ1gWtAVCYggb6rlWoz6FOPVWo31WQ1qbta6FOfJf6i6bogVUK4ZFY3lbK4gW6reImPUFOPeWok1dDrLYt3qUYPlImf9DZPzdQ4qbQc1sD4ZFK3qWmfVfKcqCoXVdQjLUOfVf6E6FOPLdDcoIYf-bo3ZID4pFKxgfgzVfG3edt06TgV6dwx-Wuh6Ymi6bo4pIXjNWYAZIY3LdDjpflNzbG4gya"
             });
             var source = {
                 sources: [{
