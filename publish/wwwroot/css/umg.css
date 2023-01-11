@@ -883,6 +883,8 @@ input, select, textarea, .btn, .form-control {
 .login main {
     margin: 30px 0;
     padding: 0 15px;
+    z-index: 1000;
+    margin-bottom: 200px;
 }
 
 .emoji {
@@ -908,7 +910,7 @@ input, select, textarea, .btn, .form-control {
 
 @media only screen and (min-width: 992px) {
     .question-area {
-        height: calc((0.7 * 1080/1920 * 100vw) - 0.5px);
+        height: calc((0.7 * 1080/1920 * 100vw) + 46.5px);
         border-left: 1px solid var(--main-color);
     }
 
@@ -926,7 +928,7 @@ input, select, textarea, .btn, .form-control {
     }
 
     .question-list {
-        height: calc((0.7 * 1080/1920 * 100vw) - 85px);
+        height: calc((0.7 * 1080/1920 * 100vw) - 45px);
     }
 
     .col-lg-6.question-area .question-list {
