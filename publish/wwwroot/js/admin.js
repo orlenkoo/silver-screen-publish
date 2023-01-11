@@ -7,43 +7,7 @@ $(function () {
 
     $('#datetimepicker').datetimepicker({ sideBySide: true, allowInputToggle: true, format: "DD MMM yyyy HH:mm" });
 
-    $('.trumbowyg').trumbowyg({
-        btnsDef: {
-            // Create a new dropdown
-            image: {
-                dropdown: ['insertImage', 'base64'],
-                ico: 'insertImage'
-            },
-            justify: {
-                dropdown: ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'unorderedList', 'orderedList', 'indent', 'outdent'],
-                ico: 'justifyFull'
-            }
-        },
-        // Redefine the button pane
-        btns: [
-            ['viewHTML'],
-            ['historyUndo', 'historyRedo'],
-            ['formatting'],
-            ['strong', 'em', 'del'],
-            ['superscript', 'subscript'],
-            ['foreColor', 'backColor'],
-            ['emoji'],
-            ['fontfamily'],
-            ['fontsize'],
-            ['link'],
-            ['image'], // Our fresh created dropdown
-            ['justify'],
-            ['lineheight'],
-            ['horizontalRule'],
-            ['removeformat'],
-            ['fullscreen']
-        ],
-        plugins: {
-            allowTagsFromPaste: {
-                allowedTags: ['h4', 'p', 'br']
-            }
-        }
-    });
+    //$('.trumbowyg').trumbowyg();
 
     bindContentAdd();
     bindQRSizes();
@@ -110,7 +74,7 @@ $(function () {
         $(this).parent().parent().find("a").attr("href", url);
     })
 
-    $(".spectrum").spectrum({
+    $("#PlayerControlsColor").spectrum({
         type: "component"
     })
 
