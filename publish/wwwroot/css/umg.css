@@ -33,6 +33,7 @@ html, body {
 
 .page-wrapper {
     width: 100%;
+    position: relative;
 }
 
 body:not(.full-width) .page-wrapper {
@@ -417,7 +418,6 @@ header .material-icons, header .material-icons-outlined {
 .poster-wrapper .row {
     display: flex;
     width: 100%;
-    height: 50%;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
@@ -426,7 +426,6 @@ header .material-icons, header .material-icons-outlined {
 
 .poster-wrapper .row:nth-child(1) {
     justify-content: flex-end;
-    height: 60%;
 }
 
 .poster-wrapper .row:nth-child(2) {
@@ -599,8 +598,8 @@ img#play-button:hover {
 
 footer {
     width: 100%;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    position: absolute;
+    bottom: 0;
 }
 
 footer .button-wrapper {
@@ -663,12 +662,6 @@ a:hover .logo {
 .vjs-has-started .poster-wrapper {
     display: none;
 }
-
-.vjs-has-started.vjs-paused .poster-wrapper {
-    display: block;
-}
-
-
 
 .btn {
     padding: 10px 20px;
@@ -745,7 +738,7 @@ input, select, textarea, .btn, .form-control {
     flex: 0 0 100%;
 }
 
-.has-countdown .video-wrapper-inner {
+.has-countdown .video-wrapper-inner, .end-of-event .video-wrapper-inner, .technical-difficulties .video-wrapper-inner {
     width: 100%;
     max-width: 100%;
 }
@@ -759,7 +752,7 @@ input, select, textarea, .btn, .form-control {
 
 .col-12.question-area { border-left: none }
 
-.has-countdown .question-area {
+.has-countdown .question-area, .end-of-event .question-area, .technical-difficulties .question-area {
     display: none;
 }
 
@@ -884,6 +877,10 @@ input, select, textarea, .btn, .form-control {
     margin: 30px 0;
     padding: 0 15px;
     z-index: 1000;
+    margin-bottom: 200px;
+}
+
+.page-wrapper main {
     margin-bottom: 200px;
 }
 
