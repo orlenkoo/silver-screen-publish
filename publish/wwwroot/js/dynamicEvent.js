@@ -14,7 +14,8 @@ var SilverScreen;
                     .invoke("JoinEvent", this.projectKey, this.eventBriteKey)
                     .then((data) => {
                     if (data.error) {
-                        this.showError(SilverScreen.ErrorType.Error, data.error);
+                        this.log(data.error);
+                        //this.showError(ErrorType.Error, data.error);
                     }
                     else if (this.onConnected)
                         this.onConnected();
@@ -29,7 +30,8 @@ var SilverScreen;
                 //TODO: Translation
                 if (!err)
                     err = "An error occured";
-                this.showError(SilverScreen.ErrorType.Error, err);
+                this.log(err);
+                //this.showError(ErrorType.Error, err);
             };
             this.showError = (type, message) => {
                 $("#chat-error")
@@ -65,7 +67,7 @@ var SilverScreen;
             });
             this.eventHub.onreconnecting((error) => {
                 this.log(`Reconnecting to event, error: ${error}`);
-                this.showError(SilverScreen.ErrorType.Warning, "Connection lost. Reconnecting...");
+                //this.showError(SilverScreen.ErrorType.Warning, "Connection lost. Reconnecting...");
                 if (this.onReconnecting)
                     this.onReconnecting(error);
             });
