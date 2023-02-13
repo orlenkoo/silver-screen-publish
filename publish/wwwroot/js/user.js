@@ -172,7 +172,7 @@ function startDynamicEventHub() {
             if (!clientHosted)
                 player.initialize();
 
-            prepareChat();
+            //prepareChat();
         }
     };
 
