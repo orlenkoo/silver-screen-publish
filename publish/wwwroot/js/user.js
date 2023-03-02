@@ -291,7 +291,9 @@ function startHub(triggerSend) {
             else {
                 $(".questions").append(question);
                 //$(".question-list").animate({ scrollTop: $(".questions").height() }, 2000);
-                $(".question-list").scrollTop($(".questions").height());
+                //$(".question-list").scrollTop($(".questions").height());
+                let question_list = document.getElementsByClassName("question-list");
+                question_list[0].scrollTop = question_list.scrollHeight;
             }
 
             if ($(".js-text.js-umg-ask").length)
