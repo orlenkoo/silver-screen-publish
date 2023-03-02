@@ -290,7 +290,8 @@ function startHub(triggerSend) {
                 $(".questions").prepend(question);
             else {
                 $(".questions").append(question);
-                $(".question-list").animate({ scrollTop: $(".questions").height() }, 2000);
+                //$(".question-list").animate({ scrollTop: $(".questions").height() }, 2000);
+                $(".question-list").scrollTop($(".questions").height());
             }
 
             if ($(".js-text.js-umg-ask").length)
