@@ -769,8 +769,9 @@ input, select, textarea, .btn, .form-control {
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--main-color) var(--umg-scrollbar-background);
-    display: flex;
-    flex-direction: column-reverse;
+    /*display: flex;
+    flex-direction: column-reverse;*/
+    display: block;
     height: calc((1080/1920 * 100vw) - 85px);
 }
 

@@ -293,7 +293,7 @@ function startHub(triggerSend) {
                 //$(".question-list").animate({ scrollTop: $(".questions").height() }, 2000);
                 //$(".question-list").scrollTop($(".questions").height());
                 let question_list = document.getElementsByClassName("question-list");
-                alert(question_list[0].scrollHeight)
+                //alert(question_list[0].scrollHeight)
                 question_list[0].scrollTop = question_list[0].scrollHeight;
             }
 
