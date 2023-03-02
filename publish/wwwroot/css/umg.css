@@ -630,6 +630,10 @@ a:hover .logo {
     flex: 7 1 0;
 }
 
+.video-wrapper-inner .theoplayer-container {
+    height: 100%;
+}
+
 .theoplayer-skin .vjs-big-play-button:hover {
     background: none;
     -webkit-transition-duration: 0.2s;
