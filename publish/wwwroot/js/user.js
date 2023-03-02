@@ -241,7 +241,8 @@ function startHub(triggerSend) {
             replyToEle.after(replyHtml);
         } else {
             $(".questions").append(replyHtml)
-            $(".question-list").animate({ scrollTop: $().height(".questions") }, 2000);
+            $(".question-list").animate({ scrollTop: $(".questions").height() }, 2000);
+
         }
     }
 
@@ -289,7 +290,7 @@ function startHub(triggerSend) {
                 $(".questions").prepend(question);
             else {
                 $(".questions").append(question);
-                $(".question-list").animate({ scrollTop: $().height(".questions") }, 2000);
+                $(".question-list").animate({ scrollTop: $(".questions").height() }, 2000);
             }
 
             if ($(".js-text.js-umg-ask").length)
