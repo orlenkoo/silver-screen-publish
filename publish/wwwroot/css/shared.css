@@ -7,6 +7,13 @@
     position: relative;
 }
 
+{
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 .has-countdown .video-js, .end-of-event .video-js, .technical-difficulties .video-js,
 .has-countdown .client-hosted-embed, .end-of-event .client-hosted-embed, .technical-difficulties .client-hosted-embed {
     display: none;
@@ -17,6 +24,10 @@
 .end-of-event .end-of-event-wrapper,
 .technical-difficulties .technical-difficulties-wrapper {
     display: grid;
+}
+
+.alternate-login .end-of-event-wrapper, .alternate-login .technical-difficulties-wrapper {
+    display: none;
 }
 
 .stream-countdown-wrapper > * {

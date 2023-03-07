@@ -185,6 +185,7 @@ function startDynamicEventHub() {
 
         $(".theoplayer-container").remove();
         $(".stream-countdown-wrapper").remove();
+        $("body").addClass("alternate-login");
         $(".alternate-login-wrapper").show();
     }
 

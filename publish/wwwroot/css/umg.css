@@ -742,7 +742,7 @@ input, select, textarea, .btn, .form-control {
     flex: 0 0 100%;
 }
 
-.has-countdown .video-wrapper-inner, .end-of-event .video-wrapper-inner, .technical-difficulties .video-wrapper-inner {
+.has-countdown .video-wrapper-inner, .end-of-event .video-wrapper-inner, .technical-difficulties .video-wrapper-inner, .alternate-login .video-wrapper-inner {
     width: 100%;
     max-width: 100%;
 }
@@ -756,7 +756,7 @@ input, select, textarea, .btn, .form-control {
 
 .col-12.question-area { border-left: none }
 
-.has-countdown .question-area, .end-of-event .question-area, .technical-difficulties .question-area {
+.has-countdown .question-area, .end-of-event .question-area, .technical-difficulties .question-area, .alternate-login .question-area {
     display: none;
 }
 
