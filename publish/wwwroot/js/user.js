@@ -10,7 +10,6 @@ var heartBeatInterval;
 var hbInterval;
 var viewCookieKey;
 var interval = 0;
-var chat;
 
 $(function () {
     userKey = $("#userKey").val();
@@ -173,7 +172,7 @@ function startDynamicEventHub() {
             if (!clientHosted)
                 player.initialize();
 
-            prepareChat();
+            //prepareChat();
         }
     };
 
@@ -211,13 +210,13 @@ function getCookie(name) {
 }
 
 function startHub(triggerSend) {
-    if (typeof (SilverScreen) === "undefined" || typeof (SilverScreen.Chat) === "undefined" || typeof (chat) !== "undefined")
+    if (typeof (SilverScreen) === "undefined" || typeof (SilverScreen.Chat) === "undefined")
         return;
 
     //Disable send button until connection is established
     $(".js-ask-click").addClass("disabled");
 
-    chat = new SilverScreen.Chat();
+    var chat = new SilverScreen.Chat();
 
     chat.onReconnecting = function (error) {
         $(".js-ask-click").addClass("disabled");
