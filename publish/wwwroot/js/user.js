@@ -331,7 +331,7 @@ function startCountdown() {
         var now = new Date().getTime();
         var t = date - now;
         if (t < 0) {
-            if(!clientHosted)
+            if (!clientHosted && !player.isPlaying)
                 player.initialize();
 
             prepareChat();
