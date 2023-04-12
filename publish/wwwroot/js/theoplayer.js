@@ -18,6 +18,12 @@ var SilverScreen;
             this.element = document.querySelector(".theoplayer-container");
             this.PlayerKey = $("#PlayerKey").val();
         }
+        get isPlaying() {
+            if (this.player && this.player.readyState > 0)
+                return true;
+            else
+                return false;
+        }
         initialize() {
             this.player = new THEOplayer.Player(this.element, {
                 libraryLocation: "https://cdn.myth.theoplayer.com/" + this.PlayerKey,
