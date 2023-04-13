@@ -170,8 +170,9 @@ function startDynamicEventHub() {
         } else if (dynamicEvent.isTechnicalDifficultiesEnabled) {
             $("body").addClass("technical-difficulties");
         } else {
-            if (!clientHosted)
+            if (!clientHosted && !player.isPlaying) {
                 player.initialize();
+            }
 
             prepareChat();
         }
