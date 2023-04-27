@@ -65,12 +65,9 @@ $(function () {
                 fontList: fontList
             }
         }
-    }).on("tbwchange", function () {
-        $(this).parent().addClass("changed");
     });
 
     bindContentAdd();
-    bindContentSave();
     bindQRSizes();
     bindMetrics();
     bindTabHistory();
@@ -414,87 +411,6 @@ function bindContentAdd() {
             if ($(this).hasClass("changed")) {
                 $(this).siblings(".js-content-submit").click();
             }
-        })
-    })
-}
-
-function bindContentSave() {
-    $(".js-content-save").off("click").on("click", function (e) {
-        e.preventDefault();
-
-        var $content = $(this).siblings().find(".trumbowyg-editor");
-
-        var name = $(this).attr("content-name");
-        var content = $content.html();
-        var language = $(this).attr("language");
-
-        //console.log(name, content, language);
-
-        if (!content) {
-            $content.addClass("is-invalid");
-        } else {
-            $content.removeClass("is-invalid");
-        }
-
-        if (!name || !content)
-            return;
-
-        $.ajax({
-            type: "POST",
-            url: `/project/${projectId}/contents/add`,
-            contentType: "application/json",
-            data: JSON.stringify({
-                name: name,
-                content: content,
-                language: language
-            }),
-            success: function (response) {
-                if (response.success) {
-                    $content.removeClass("changed");
-                    $("#alert-container").html("<div class='alert alert-success' role='alert'>" + response.msg + "</div>");
-                } else {
-                    $("#alert-container").html("<div class='alert alert-danger' role='alert'>" + response.msg + "</div>");
-                }
-            },
-            error: function () {
-                alert("An error occurred");
-            }
-        });
-    });
-
-    $(".js-content input").change(function () {
-        $(this).addClass("changed");
-    })
-
-    $(".js-content-save-all").click(function (e) {
-        e.preventDefault();
-
-        $.ajax({
-            url: `/project/ajaxsave/${projectId}`,
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
-                Name: $("input[name=Name]").val(),
-                BrowserTabTitle: $("input[name=BrowserTabTitle]").val(),
-                CustomCssUrl: $("input[name=CustomCssUrl]").val(),
-                PlayerControlsColor: $("input[name=PlayerControlsColor]").val(),
-                EventBackgroundColor: $("input[name=EventBackgroundColor]").val(),
-                EventForegroundColor: $("input[name=EventForegroundColor]").val()
-            }),
-            success: function (response) {
-                if (response.success) {
-                    $("#alert-container").html("<div class='alert alert-success' role='alert'>" + response.msg + "</div>");
-                } else {
-                    $("#alert-container").html("<div class='alert alert-danger' role='alert'>" + response.msg + "</div>");
-                }
-            },
-            error: function () {
-                console.log("An error occurred");
-            }
-        });
-
-        $(".js-content .trumbowyg.changed").each(function () {
-            $(this).siblings(".js-content-save").click();
         })
     })
 }
