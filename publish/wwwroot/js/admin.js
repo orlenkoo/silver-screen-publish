@@ -139,6 +139,10 @@ $(function () {
         type: "component"
     })
 
+    if (!$(".nav-tabs .nav-link").hasClass("active")) {
+        $(".nav-tabs .nav-link")[0].click();
+    }
+
 });
 
 function bindS3Uploader() {
