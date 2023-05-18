@@ -243,8 +243,12 @@ function startHub(triggerSend) {
         if (replyToEle.length) {
             replyToEle.after(replyHtml);
         } else {
-            $(".questions").append(replyHtml)
-            $(".question-list").animate({ scrollTop: $(".questions").height() }, 2000);
+            if (chatMode == SilverScreen.ChatMode.PrivateChat)
+                $(".questions").prepend(replyHtml);
+            else {
+                $(".questions").append(replyHtml)
+                $(".question-list").animate({ scrollTop: $(".questions").height() }, 2000);
+            }
 
         }
     }

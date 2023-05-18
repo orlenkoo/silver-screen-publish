@@ -154,6 +154,28 @@ function startHub() {
                 userThread.find(".reply-count").text(userThread.find(".reply:not(.hidden)").length);
             });
         });
+
+        //private chat to everyone for moderator
+        $(".js-everyone-click").off("click").on("click", function (e) {
+            e.preventDefault();
+            var str = $(".js-everyone-text").val();
+            if (!str)
+                return;
+
+            str = $("<div>").text(str).html();
+            $(".js-everyone-text").val("");
+
+            chat.sendMessage(str, null, function (data) {
+                str = $("<div>").text(str).html();
+                var question = $("<div class='message reply' data-id='" + data.id + "' data-response-to-id=''>" + str + "</div>");
+                $(".user-thread-counts").after(question);
+                $(".reply-count").each(function () {
+                    var replyCount = parseInt($(this).text()) + 1;
+                    $(this).text(replyCount);
+                })
+                $(".js-everyone-text").val("");
+            });
+        });
     }
 
     function setCollapse() {
