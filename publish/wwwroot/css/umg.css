@@ -889,6 +889,10 @@ input, select, textarea, .btn, .form-control {
     margin-bottom: 200px;
 }
 
+body.hide-footer .page-wrapper main {
+    margin-bottom: 0;
+}
+
 .emoji {
     display: inline;
     position: absolute;
