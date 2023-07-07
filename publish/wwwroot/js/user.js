@@ -28,7 +28,8 @@ $(function () {
     } else {
         if (!clientHosted) {
             if (typeof __cmp !== "undefined") {
-                __cmp("addEventListener", ["consent", player.initialize, false], null)
+                console.log("cookie concent loaded")
+                __cmp("addEventListener", ["consent", loadVideoPlayer, false], null)
             } else {
                 player.initialize();
             }
@@ -40,6 +41,10 @@ $(function () {
     startDynamicEventHub();
 });
 
+function loadVideoPlayer() {
+    console.log("video palyer initializer")
+    player.initialize();
+}
 function bindNickNameChooser() {
     $(".js-pick-nickname-click").on("click", chooseNickname);
 
@@ -177,7 +182,7 @@ function startDynamicEventHub() {
         } else {
             if (!clientHosted && !player.isPlaying) {
                 if (typeof __cmp !== "undefined") {
-                    __cmp("addEventListener", ["consent", player.initialize, false], null)
+                    __cmp("addEventListener", ["consent", loadVideoPlayer, false], null)
                 } else {
                     player.initialize();
                 }
@@ -347,7 +352,7 @@ function startCountdown() {
         if (t < 0) {
             if (!clientHosted && !player.isPlaying) {
                 if (typeof __cmp !== "undefined") {
-                    __cmp("addEventListener", ["consent", player.initialize, false], null)
+                    __cmp("addEventListener", ["consent", loadVideoPlayer, false], null)
                 } else {
                     player.initialize();
                 }
