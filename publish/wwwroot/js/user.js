@@ -43,7 +43,8 @@ $(function () {
 
 function loadVideoPlayer() {
     console.log("video palyer initializer")
-    player.initialize();
+    if (!player.isPlaying)
+        player.initialize();
 }
 function bindNickNameChooser() {
     $(".js-pick-nickname-click").on("click", chooseNickname);
