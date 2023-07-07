@@ -26,8 +26,13 @@ $(function () {
     if ($(".has-countdown").length > 0) {
         startCountdown();
     } else {
-        if (!clientHosted)
-            player.initialize();
+        if (!clientHosted) {
+            if (typeof __cmp !== "undefined") {
+                __cmp("addEventListener", ["consent", player.initialize, false], null)
+            } else {
+                player.initialize();
+            }
+        }
 
         prepareChat();
     }
@@ -171,7 +176,11 @@ function startDynamicEventHub() {
             $("body").addClass("technical-difficulties");
         } else {
             if (!clientHosted && !player.isPlaying) {
-                player.initialize();
+                if (typeof __cmp !== "undefined") {
+                    __cmp("addEventListener", ["consent", player.initialize, false], null)
+                } else {
+                    player.initialize();
+                }
             }
 
             prepareChat();
@@ -336,8 +345,13 @@ function startCountdown() {
         var now = new Date().getTime();
         var t = date - now;
         if (t < 0) {
-            if (!clientHosted && !player.isPlaying)
-                player.initialize();
+            if (!clientHosted && !player.isPlaying) {
+                if (typeof __cmp !== "undefined") {
+                    __cmp("addEventListener", ["consent", player.initialize, false], null)
+                } else {
+                    player.initialize();
+                }
+            }
 
             prepareChat();
             clearInterval(interval);
