@@ -33,9 +33,14 @@ var SilverScreen;
                 sources: [{
                         "src": this.watchUrl,
                         "type": "application/x-mpegurl",
+                        "lowLatency": false,
                         "crossOrigin": this.crossOriginSetting
                     }]
             };
+            let userAgent = navigator.userAgent;
+            if (userAgent.match(/safari/i)) {
+                source.sources[0].useNativePlayback = true;
+            }
             if (this.enableAnalytics) {
                 source.analytics = [{
                         "integration": "youbora",
