@@ -38,7 +38,7 @@ var SilverScreen;
                     }]
             };
             let userAgent = navigator.userAgent;
-            if (userAgent.match(/safari/i)) {
+            if (userAgent.match(/safari/i) && navigator.vendor.indexOf("Apple")) {
                 source.sources[0].useNativePlayback = true;
             }
             if (this.enableAnalytics) {
