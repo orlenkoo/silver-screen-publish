@@ -8,6 +8,7 @@ var SilverScreen;
             this.youboraAccountCode = $("#youboraAccountCode").val();
             this.crossOriginSetting = $("#crossOriginSetting").val();
             this.backgroundPoster = $("#backgroundPoster").val();
+            this.nativePlayback = $("#nativePlayback").val() == "true";
             this.DRMEnabled = $("#DRMEnabled").val() == "true";
             this.HLSLicenseAcquisitionURL = $("#HLSLicenseAcquisitionURL").val();
             this.HLSCertificateURL = $("#HLSCertificateURL").val();
@@ -37,8 +38,7 @@ var SilverScreen;
                         "crossOrigin": this.crossOriginSetting
                     }]
             };
-            let userAgent = navigator.userAgent;
-            if (userAgent.match(/safari/i) && navigator.vendor.indexOf("Apple")) {
+            if (this.nativePlayback && navigator.userAgent.indexOf("Safari") != -1 && navigator.vendor.indexOf("Apple") > -1) {
                 source.sources[0].useNativePlayback = true;
             }
             if (this.enableAnalytics) {
